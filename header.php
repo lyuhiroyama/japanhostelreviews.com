@@ -1,14 +1,24 @@
 
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
     .top-menu {
         position: fixed;
         top: 0;
         width: 100%;
+        height: 40px;
         background-color: #333;
         color: white;
         padding: 10px;
         text-align: center;
-        z-index: 1000;
+        z-index: 100;
+    }
+
+    body {
+        padding-top: 60px; /* Add padding to prevent top menu from overlapping with body contents */
     }
 
 </style>
