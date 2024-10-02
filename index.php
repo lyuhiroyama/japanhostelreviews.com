@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Honest Hostel Reviews</title>
 </head>
@@ -32,13 +33,18 @@
                 $('#hostel-list').empty();
                 hostels.forEach(hostel => {
                     $('#hostel-list').append(`
-                        <div class="hostel">
-                            <h3>${hostel.name}</h3>
-                            <p>${hostel.description}</p>
-                            <p>Location: ${hostel.location}</p>
-                            <p>Price Range: ${hostel.price_range}</p>
-                            <p>Rating: ${hostels.rating}</p>
-                        </div>
+                        <a href="hostel_details.php?id=${hostel.id}">
+                            <div class="hostel">
+                                <div class="hostel-info">
+                                    <h3>${hostel.name}</h3>
+                                    <p>${hostel.description}</p>
+                                    <p>Location: ${hostel.location}</p>
+                                    <p>Price Range: ${hostel.price_range}</p>
+                                    <p>Rating: ${hostel.rating}</p>
+                                </div>
+                                <img src="${hostel.thumbnail}" class="thumbnail">
+                            </div>
+                        </a>
                     `)
                 })
             })

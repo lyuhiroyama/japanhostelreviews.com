@@ -15,8 +15,6 @@ try {
 
 
 
-// HELlo
-
 $conn = null;
 
 ?>
