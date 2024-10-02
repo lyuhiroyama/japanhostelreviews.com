@@ -1,4 +1,5 @@
 <?php
+include('header.php');
 include('db_connect.php');
 
 // Get the hostel ID from the URL in each hostel's anchor tag
