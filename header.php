@@ -6,27 +6,50 @@
     }
 
     .top-menu {
+        display: flex;
+        justify-content: space-between;
+        align-items:center;
         position: fixed;
         top: 0;
         width: 100%;
-        height: 40px;
-        background-color: #333;
+        height: 60px;
+        background-color: #ffffff;
+        border: 1px solid #bababa;
         color: white;
-        padding: 10px;
         text-align: center;
         z-index: 100;
     }
 
-    body {
-        padding-top: 60px; /* Add padding to prevent top menu from overlapping with body contents */
+    #header-logo {
+        height: 100px;
+        width: auto;
+        margin: 0 10px 0;
     }
+
+
+    #search-box {
+        background-color: #edebeb; 
+        border-radius: 25px; 
+        border: 1px solid #bababa;
+        padding: 10px 20px;
+        margin: 5px 500px 5px;
+        width: 300px; 
+    }
+
+    body {
+        padding-top: 60px; 
+    }
+
 
 </style>
 
 <header>
     <div class="top-menu">
-
-        <a href="index.php" style="color:white;">Home</a>
+        <a href="index.php" style="color:white;"><img src="assets/header-logo.png" id="header-logo"></a>
+        <div>
+            <input id="search-box" type="text" placeholder="Search">
+        </div>
+        <a href="idk"><p>Create Account</p></a>
 
     </div>
 </header>
