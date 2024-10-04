@@ -32,8 +32,11 @@
         border-radius: 25px; 
         border: 1px solid #bababa;
         padding: 10px 20px;
-        margin: 5px 500px 5px;
         width: 300px; 
+    }
+
+    .header-buttons {
+        margin: 10px;
     }
 
     body {
@@ -49,7 +52,7 @@
         <div>
             <input id="search-box" type="text" placeholder="Search">
         </div>
-        <a href="idk"><p>Create Account</p></a>
+        <a href="idk" class="header-buttons"><p>Create Account</p></a>
 
     </div>
 </header>

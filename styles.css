@@ -1,3 +1,11 @@
+a {
+    text-decoration: none;
+}
+
+hr {
+    margin: 0 10px 0;
+}
+
 .panel-container {
     display: flex;
     height: 100vh; /* Full viewport height */
@@ -7,7 +15,11 @@
     margin-left: 250px;
 }
 
-
+.hostel-container {
+    height: 200px;
+    margin: 20px;
+    background-color: blue;
+}
 
 .hostel {
     display: flex;

@@ -27,18 +27,25 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
     <title><?php echo htmlspecialchars($hostel['name']); ?> - Hostel Reviews</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <h2><?php echo htmlspecialchars($hostel['name']); ?></h2>
-    <p><?php echo htmlspecialchars($hostel['description']); ?></p>
-    <p>Location: <?php echo htmlspecialchars($hostel['location']); ?></p>
-    <p>Price Range: <?php echo htmlspecialchars($hostel['price_range']); ?></p>
-    <p>Rating: <?php echo htmlspecialchars($hostel['rating']); ?></p>
-    <img src="<?php echo htmlspecialchars($hostel['thumbnail']); ?>" style="max-width: 300px;">
+    <div class="panel-container">
+
+        <?php include('left_panel.php'); ?>
+        <div class="body-panel">
+            <h2><?php echo htmlspecialchars($hostel['name']); ?></h2>
+            <p><?php echo htmlspecialchars($hostel['description']); ?></p>
+            <p>Location: <?php echo htmlspecialchars($hostel['location']); ?></p>
+            <p>Price Range: <?php echo htmlspecialchars($hostel['price_range']); ?></p>
+            <p>Rating: <?php echo htmlspecialchars($hostel['rating']); ?></p>
+            <img src="<?php echo htmlspecialchars($hostel['thumbnail']); ?>" style="max-width: 300px;">
+        </div>
+    </div>
 
 
-    <!-- Commenting out below for now: -->
-    <h3>Reviews</h3>
-    <!-- <div id="reviews">
+    
+    <!-- <h3>Reviews</h3>
+    <div id="reviews">
         <?php if ($reviews): ?>
             <?php foreach ($reviews as $review): ?>
                 <div class="review">

@@ -11,26 +11,17 @@ include("header.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>Honest Hostel Reviews</title>
+    <title>Japan Hostel Reviews</title>
 </head>
 <body>
     <div class="panel-container">
         
             <?php include 'left_panel.php';?>
             <div class="body-panel">
-                <div id="hostel-list"></div>
-                <div id="review-section" style="display: none;">
-                <h2 id="hostel-name"></h2>
-                <div id="reviews"></div>
-                <form id="review-form">
-                    <input type="text" id="user-name" placeholder="Your name" required>
-                    <input type="number" id="rating" min="1" max="5" placeholder="Rating (1-5)" required>
-                    <textarea id="review-text" placeholder="Write your review here" required></textarea>
-                    <button type="submit">Submit Review</button>
-                </form>
-            </div>    
+            </div>
+            <?php include 'right_panel.php';?>
 
-        </div>
+        
     </div>
 
     
@@ -41,19 +32,21 @@ include("header.php");
             $.getJSON('get_hostels.php', function(hostels) {
                 $('#hostel-list').empty();
                 hostels.forEach(hostel => {
-                    $('#hostel-list').append(`
-                        <a href="hostel_details.php?id=${hostel.id}">
-                            <div class="hostel">
-                                <div class="hostel-info">
-                                    <h3>${hostel.name}</h3>
-                                    <p>${hostel.description}</p>
-                                    <p>Location: ${hostel.location}</p>
-                                    <p>Price Range: ${hostel.price_range}</p>
-                                    <p>Rating: ${hostel.rating}</p>
+                    $('.body-panel').append(`
+                        <div class="hostel-container">
+                            <a href="hostel_details.php?id=${hostel.id}">
+                                <div class="hostel">
+                                    <div class="hostel-info">
+                                        <h3>${hostel.name}</h3>
+                                        <p>${hostel.description}</p>
+                                        <p>Location: ${hostel.location}</p>
+                                        <p>Price Range: ${hostel.price_range}</p>
+                                        <p>Rating: ${hostel.rating}</p>
+                                    </div>
+                                    <img src="${hostel.thumbnail}" class="thumbnail">
                                 </div>
-                                <img src="${hostel.thumbnail}" class="thumbnail">
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     `)
                 })
             })
