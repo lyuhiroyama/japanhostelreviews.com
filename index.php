@@ -14,23 +14,26 @@ include("header.php");
     <title>Honest Hostel Reviews</title>
 </head>
 <body>
-    <h3>Honest Hostel Reviews</h3>
-    <div id="search-bar">
-        <input type="text" id="search-input" placeholder="Search hostels">
-        <button id="search-button">Search</button>
+    <div class="panel-container">
+        
+            <?php include 'left_panel.php';?>
+            <div class="body-panel">
+                <div id="hostel-list"></div>
+                <div id="review-section" style="display: none;">
+                <h2 id="hostel-name"></h2>
+                <div id="reviews"></div>
+                <form id="review-form">
+                    <input type="text" id="user-name" placeholder="Your name" required>
+                    <input type="number" id="rating" min="1" max="5" placeholder="Rating (1-5)" required>
+                    <textarea id="review-text" placeholder="Write your review here" required></textarea>
+                    <button type="submit">Submit Review</button>
+                </form>
+            </div>    
+
+        </div>
     </div>
 
-    <div id="hostel-list"></div>
-    <div id="review-section" style="display: none;">
-        <h2 id="hostel-name"></h2>
-        <div id="reviews"></div>
-        <form id="review-form">
-            <input type="text" id="user-name" placeholder="Your name" required>
-            <input type="number" id="rating" min="1" max="5" placeholder="Rating (1-5)" required>
-            <textarea id="review-text" placeholder="Write your review here" required></textarea>
-            <button type="submit">Submit Review</button>
-        </form>
-    </div>
+    
 
     <script>
         // Fetch & Dipslay hostels

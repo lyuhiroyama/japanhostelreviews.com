@@ -1,3 +1,14 @@
+.panel-container {
+    display: flex;
+    height: 100vh; /* Full viewport height */
+}
+
+.body-panel {
+    margin-left: 250px;
+}
+
+
+
 .hostel {
     display: flex;
 }
