@@ -12,21 +12,3 @@ hr {
     height: 100vh; /* Full viewport height */
 }
 
-.hostel-container {
-    height: 200px;
-    margin: 20px;
-    border: black 1px solid;
-}
-
-.hostel {
-    display: flex;
-}
-
-.thumbnail {
-    width: 200px;
-    height: auto;
-}
-
-.body-panel {
-    flex-grow: 1; /* Not exactly sure how this works, but it fills up the centre of viewport dynamically */
-}
