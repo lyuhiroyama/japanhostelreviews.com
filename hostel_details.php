@@ -40,6 +40,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             <p>Rating: <?php echo htmlspecialchars($hostel['rating']); ?></p>
             <img src="<?php echo htmlspecialchars($hostel['thumbnail']); ?>" style="max-width: 300px;">
         </div>
+        <?php include('right_panel.php'); ?>
     </div>
 
 

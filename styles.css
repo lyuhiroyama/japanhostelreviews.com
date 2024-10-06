@@ -8,17 +8,14 @@ hr {
 
 .panel-container {
     display: flex;
+    justify-content: space-between;
     height: 100vh; /* Full viewport height */
-}
-
-.body-panel {
-    margin-left: 250px;
 }
 
 .hostel-container {
     height: 200px;
     margin: 20px;
-    background-color: blue;
+    border: black 1px solid;
 }
 
 .hostel {
@@ -28,4 +25,8 @@ hr {
 .thumbnail {
     width: 200px;
     height: auto;
+}
+
+.body-panel {
+    flex-grow: 1; /* Not exactly sure how this works, but it fills up the centre of viewport dynamically */
 }
