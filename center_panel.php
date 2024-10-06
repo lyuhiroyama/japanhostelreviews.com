@@ -7,18 +7,23 @@
         }
 
         .hostel-container {
-            height: 200px;
+            height: 130px;
             margin: 20px;
-            border: black 1px solid;
         }
 
         .hostel {
             display: flex;
         }
 
+        .hostel-info { /* container with info excluding thumbnail */
+            padding: 20px;
+        }
+        
+
         .thumbnail {
             width: 200px;
-            height: auto;
+            height: 120px;
+            object-fit: contain; /* Fills content box while maintaining aspect ratio */
         }
     </style>
 </head>
@@ -33,19 +38,26 @@
                 hostels.forEach(hostel => {
                     $('.center-panel').append(`
                         <div class="hostel-container">
-                            <a href="hostel_details.php?id=${hostel.id}">
+
                                 <div class="hostel">
+                                    <a href="hostel_details.php?id=${hostel.id}">
+                                        <img src="${hostel.thumbnail}" class="thumbnail">
+                                    </a>
                                     <div class="hostel-info">
-                                        <h3>${hostel.name}</h3>
+                                        <h3 class="hostel-title">
+                                            <a href="hostel_details.php?id=${hostel.id}">
+                                            ${hostel.name}
+                                            </a>
+                                        </h3>
                                         <p>${hostel.description}</p>
                                         <p>Location: ${hostel.location}</p>
                                         <p>Price Range: ${hostel.price_range}</p>
                                         <p>Rating: ${hostel.rating}</p>
                                     </div>
-                                    <img src="${hostel.thumbnail}" class="thumbnail">
                                 </div>
-                            </a>
+
                         </div>
+                        <hr>
                     `)
                 })
             })

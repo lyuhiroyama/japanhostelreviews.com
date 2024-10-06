@@ -1,9 +1,9 @@
 <head>
     <style>
         .right-panel {
-            height: calc(100vh - 40px); /* Reduce height to account for the margin (top + bottom) */
-            margin: 25px 20px;
-            padding: 20px;
+            height: calc(100vh - 60px); /* Reduce height to account for the margin (top + bottom) */
+            margin: 20px 20px;
+            padding: 30px;
             border-radius: 15px;
             background-color: #d6d6d6;
             width: 250px;
@@ -12,5 +12,5 @@
 </head>
 
 <div class="right-panel">
-        <p>test</p>
+        <p>Recent</p>
 </div>
