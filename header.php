@@ -17,8 +17,8 @@
         border: 1px solid #bababa;
         color: white;
         text-align: center;
-        z-index: 100;
     }
+    
 
     #header-logo {
         height: 100px;
@@ -37,10 +37,6 @@
 
     .header-buttons {
         margin: 10px;
-    }
-
-    body {
-        padding-top: 60px; 
     }
 
 

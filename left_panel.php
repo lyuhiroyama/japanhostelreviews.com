@@ -3,7 +3,8 @@
     <style>
         
         .left-panel {
-            position: sticky;
+            position: fixed;
+            top: 65px;
             height: 100vh;
             width: 250px; 
             background-color: #ffffff; 
@@ -19,14 +20,11 @@
             margin: 10px 0 10px 20px;
         }
     </style>
-</haed>
+</head>
 
 <div class="left-panel">
     <ul>
         <li><a href="index.php">Home</a></li>
-        <li><a>Button</a></li>
-        <li><a>Button</a></li>
-        <li><a>Button</a></li>
     </ul>
     <hr>
     <h3>Recent</h3>
