@@ -12,6 +12,14 @@ include("header.php");
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Japan Hostel Reviews</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+    .panel-container {
+        display: flex;
+        justify-content: space-between;
+        height: auto;
+        margin-top: 60px;
+    }
+    </style>
 </head>
 <body>
     <div class="panel-container">

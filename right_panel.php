@@ -12,5 +12,5 @@
 </head>
 
 <div class="right-panel">
-        <p>Recent</p>
+        <p>Recent Hostels</p>
 </div>

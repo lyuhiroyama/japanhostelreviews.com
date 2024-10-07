@@ -26,6 +26,10 @@
             height: 120px;
             object-fit: contain; /* Fills content box while maintaining aspect ratio */
         }
+
+        h3.hostel-title a:visited {
+            color: grey;
+        }
     </style>
 </head>
 

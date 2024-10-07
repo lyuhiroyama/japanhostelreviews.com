@@ -27,10 +27,19 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
     <title><?php echo htmlspecialchars($hostel['name']); ?> - Hostel Reviews</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        .center-panel {
-            flex-grow: 1; /* Not exactly sure how this works, but it fills up the centre of viewport dynamically */
-            margin-left: 250px;
+        .panel-container {
+            display: flex;
+            justify-content: space-between;
+            height: auto;
+            margin-top: 60px;
         }
+        .center-panel {
+            margin-left: 250px;
+            flex-grow: 1; /* Fills rest of the space. Without this center-panel shortens in width. */
+            display: flex;
+            justify-content: center;
+        }
+        
     </style>
 </head>
 
@@ -39,12 +48,14 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
 
         <?php include('left_panel.php'); ?>
         <div class="center-panel">
-            <h2><?php echo htmlspecialchars($hostel['name']); ?></h2>
-            <p><?php echo htmlspecialchars($hostel['description']); ?></p>
-            <p>Location: <?php echo htmlspecialchars($hostel['location']); ?></p>
-            <p>Price Range: <?php echo htmlspecialchars($hostel['price_range']); ?></p>
-            <p>Rating: <?php echo htmlspecialchars($hostel['rating']); ?></p>
-            <img src="<?php echo htmlspecialchars($hostel['thumbnail']); ?>" style="max-width: 300px;">
+            <div class="hostel-info">
+                <h2><?php echo htmlspecialchars($hostel['name']); ?></h2>
+                <p><?php echo htmlspecialchars($hostel['description']); ?></p>
+                <p>Location: <?php echo htmlspecialchars($hostel['location']); ?></p>
+                <p>Price Range: <?php echo htmlspecialchars($hostel['price_range']); ?></p>
+                <p>Rating: <?php echo htmlspecialchars($hostel['rating']); ?></p>
+                <img src="<?php echo htmlspecialchars($hostel['thumbnail']); ?>" style="max-width: 300px;">
+            </div>
         </div>
         <?php include('right_panel.php'); ?>
     </div>
