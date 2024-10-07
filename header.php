@@ -28,7 +28,7 @@
 
 
     #search-box {
-        background-color: #edebeb; 
+        background-color: #f0f0f0; 
         border-radius: 25px; 
         border: 1px solid #bababa;
         padding: 10px 20px;

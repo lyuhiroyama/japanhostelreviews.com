@@ -1,5 +1,5 @@
 * {
-    font-family: verdana, arial, helvetica, sans-serif;
+    font-family: normal x-small verdana, arial, helvetica, sans-serif; /* Not sure how, but seems to work. */
 }
 
 a {
@@ -9,4 +9,8 @@ a {
 
 hr {
     margin: 0 10px 0;
+}
+
+img {
+    border-radius: 20px;
 }

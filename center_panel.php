@@ -4,7 +4,7 @@
     <style>
         .center-panel {
             flex-grow: 1; /* Not exactly sure how this works, but it fills up the centre of viewport dynamically */
-            margin-left: 250px;
+            margin-left: 270px;
         }
 
         .hostel-container {

@@ -34,10 +34,50 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             margin-top: 60px;
         }
         .center-panel {
-            margin-left: 250px;
+            margin-left: 270px;
             flex-grow: 1; /* Fills rest of the space. Without this center-panel shortens in width. */
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        .hostel-info {
+            padding: 30px;
+        }
+
+        h2 { /* hostel title (center panel) */
+            padding: 20px;
+        }
+
+        .hostel-info-center img {
+            padding-bottom: 15px;
+            width: 100%; /* 100% of its container */
+            max-width: 750px;
+        }
+
+        #review-input {            
+            border-radius: 25px; 
+            border: 1px solid #bababa;
+            padding: 10px 20px;
+            width: 100%; /* 100% of its container */
+            height: 40px;
+            max-width: 750px;
+        }
+
+        .hostel-info-right-panel {
+            height: calc(100vh - 60px); /* Reduce height to account for the margin (top + bottom) */
+            margin: 20px 20px;
+            padding: 30px;
+            border-radius: 15px;
+            background-color: #f9f5ea; /* For stronger orange-yellow: #f3e7ca */
+            width: 250px; 
+        }
+
+        .hostel-info-right-panel h3 {
+            margin-bottom: 10px;
+        }
+
+        .hostel-info-right-panel p {
+            padding: 10px;
         }
         
     </style>
@@ -47,17 +87,23 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
     <div class="panel-container">
 
         <?php include('left_panel.php'); ?>
+
         <div class="center-panel">
-            <div class="hostel-info">
+            <div class="hostel-info-center">
                 <h2><?php echo htmlspecialchars($hostel['name']); ?></h2>
-                <p><?php echo htmlspecialchars($hostel['description']); ?></p>
-                <p>Location: <?php echo htmlspecialchars($hostel['location']); ?></p>
-                <p>Price Range: <?php echo htmlspecialchars($hostel['price_range']); ?></p>
-                <p>Rating: <?php echo htmlspecialchars($hostel['rating']); ?></p>
-                <img src="<?php echo htmlspecialchars($hostel['thumbnail']); ?>" style="max-width: 300px;">
+                <img src="<?php echo htmlspecialchars($hostel['thumbnail']); ?>">
             </div>
+            <input id="review-input" type="text" placeholder="Add a review">
         </div>
-        <?php include('right_panel.php'); ?>
+
+        <div class="hostel-info-right-panel">
+            <h3><?php echo htmlspecialchars($hostel['name']); ?></h2>
+            <p><?php echo htmlspecialchars($hostel['description']); ?></p>
+            <p>Location: <?php echo htmlspecialchars($hostel['location']); ?></p>
+            <p>Price Range: <?php echo htmlspecialchars($hostel['price_range']); ?></p>
+            <p>Rating: <?php echo htmlspecialchars($hostel['rating']); ?></p>
+        </div>
+
     </div>
 
 
