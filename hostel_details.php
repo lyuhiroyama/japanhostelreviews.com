@@ -26,13 +26,19 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($hostel['name']); ?> - Hostel Reviews</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .center-panel {
+            flex-grow: 1; /* Not exactly sure how this works, but it fills up the centre of viewport dynamically */
+            margin-left: 250px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="panel-container">
 
         <?php include('left_panel.php'); ?>
-        <div class="body-panel">
+        <div class="center-panel">
             <h2><?php echo htmlspecialchars($hostel['name']); ?></h2>
             <p><?php echo htmlspecialchars($hostel['description']); ?></p>
             <p>Location: <?php echo htmlspecialchars($hostel['location']); ?></p>
