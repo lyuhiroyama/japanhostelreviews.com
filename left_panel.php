@@ -13,8 +13,14 @@
         }
         
         .left-panel ul li {
-            margin: 10px 0 10px 20px;
+            margin: 10px 26px;
+            padding: 10px;
             list-style-type: none;
+        }
+
+        .li-buttons:hover {
+            background-color: #f5f5f5;
+            border-radius: 10px;
         }
 
         .left-panel ul li a {
@@ -24,8 +30,11 @@
 
         .material-symbols-outlined { /* the icons */
             margin-bottom: 5px;
+            margin-left: -5px;
+            margin-right: 3px;
+            padding-left: 5px;
         }
-        
+
 
 
 
@@ -39,8 +48,8 @@
 
 <div class="left-panel">
     <ul>
-        <li><a href="index.php"><span class="material-symbols-outlined">home</span>Home</a></li>
+        <li class="li-buttons"><a href="index.php"><span class="material-symbols-outlined">home</span>Home</a></li>
         <hr>
-        <li>Recent</li>
+        <li class="li-headers">Recent</li>
     </ul>
 </div>
