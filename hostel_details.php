@@ -65,7 +65,7 @@ $reviews = $review_stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         .hostel-info-right-panel {
-            height: calc(100vh - 60px); /* Reduce height to account for the margin (top + bottom) */
+            height: 100%;
             margin: 20px 20px;
             padding: 30px;
             border-radius: 15px;
@@ -97,7 +97,6 @@ $reviews = $review_stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <input id="review-input" type="text" placeholder="Add a review">
 
-            <h3>Reviews</h3>
             <div id="reviews">
                 <?php if ($reviews): ?>
                 <?php foreach ($reviews as $review): ?>
