@@ -32,7 +32,7 @@
         border-radius: 25px; 
         border: 1px solid #bababa;
         padding: 10px 20px;
-        width: 300px; 
+        width: 400px; 
     }
 
     .header-buttons {
