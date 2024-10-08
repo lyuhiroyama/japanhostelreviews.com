@@ -17,19 +17,30 @@
             list-style-type: none;
         }
 
-
-        .left-panel h3 {
-            margin: 10px 0 10px 20px;
+        .left-panel ul li a {
+            display: flex;
+            align-items: center;
         }
+
+        .material-symbols-outlined { /* the icons */
+            margin-bottom: 5px;
+        }
+        
+
+
+
+
+
+
+        
+        
     </style>
 </head>
 
 <div class="left-panel">
     <ul>
         <li><a href="index.php"><span class="material-symbols-outlined">home</span>Home</a></li>
-    </ul>
-    <hr>
-    <h3>Recent</h3>
-    <ul>
+        <hr>
+        <li>Recent</li>
     </ul>
 </div>
