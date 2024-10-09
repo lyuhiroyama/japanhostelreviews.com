@@ -2,28 +2,40 @@
 include('header.php');
 include('db_connect.php');
 
+echo "YO";
+
 // Get the hostel ID from the URL in each hostel's anchor tag
 $hostel_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 // Handle the review submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     // Get the data from the form
     $user_name = htmlspecialchars($_POST['user_name']);
-    $rating = floatval($_POST['rating']);
+    $rating = intval($_POST['rating']);
     $review_text = htmlspecialchars($_POST['review_text']);
+
+    echo $hostel_id;
+    echo $user_name;
+    echo $rating;
+    echo $review_text;
     
+
     // Insert the review into the database
     $insert_stmt = $conn->prepare("INSERT INTO reviews (hostel_id, user_name, rating, review_text) VALUES (:hostel_id, :user_name, :rating, :review_text)");
     $insert_stmt->bindParam(':hostel_id', $hostel_id, PDO::PARAM_INT);
     $insert_stmt->bindParam(':user_name', $user_name, PDO::PARAM_STR);
-    $insert_stmt->bindParam(':rating', $rating, PDO::PARAM_STR);
+    $insert_stmt->bindParam(':rating', $rating, PDO::PARAM_INT);
     $insert_stmt->bindParam(':review_text', $review_text, PDO::PARAM_STR);
     $insert_stmt->execute();
+    
     
     // Redirect to the same page to avoid resubmission on refresh
     header("Location: hostel_details.php?id=$hostel_id");
     exit();
 }
+
+
 
 // Fetch hostel details
 $stmt = $conn->prepare("SELECT * FROM hostels WHERE id = :id");
@@ -141,6 +153,7 @@ $reviews = $review_stmt->fetchAll(PDO::FETCH_ASSOC);
                 <button type="submit">Submit Review</button>
             </form>
 
+
             <div id="reviews">
                 <?php if ($reviews): ?>
                 <?php foreach ($reviews as $review): ?>
@@ -155,6 +168,7 @@ $reviews = $review_stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php else: ?>
                     <p>No reviews yet.</p>
                 <?php endif; ?>
+
             </div>
 
         </div>
