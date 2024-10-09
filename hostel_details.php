@@ -25,6 +25,7 @@ $reviews = $review_stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($hostel['name']); ?> - Hostel Reviews</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"> <!-- import Google Material Icons -->
     <link rel="stylesheet" href="styles.css">
     <style>
         .panel-container {
@@ -60,8 +61,22 @@ $reviews = $review_stmt->fetchAll(PDO::FETCH_ASSOC);
             border: 1px solid #bababa;
             padding: 10px 20px;
             width: 100%; /* 100% of its container */
-            height: 40px;
             max-width: 750px;
+            height: 40px;
+        }
+
+        #reviews {
+            margin: 20px;
+            width: 100%;
+            max-width: 750px;
+        }
+
+        .review {
+            margin: 30px 0;
+        }
+
+        .review-header {
+            display: flex;
         }
 
         .hostel-info-right-panel {
@@ -95,15 +110,18 @@ $reviews = $review_stmt->fetchAll(PDO::FETCH_ASSOC);
                 <h2><?php echo htmlspecialchars($hostel['name']); ?></h2>
                 <img src="<?php echo htmlspecialchars($hostel['thumbnail']); ?>">
             </div>
+
             <input id="review-input" type="text" placeholder="Add a review">
 
             <div id="reviews">
                 <?php if ($reviews): ?>
                 <?php foreach ($reviews as $review): ?>
                     <div class="review">
-                        <p><strong><?php echo htmlspecialchars($review['user_name']); ?></strong> rated it <?php echo htmlspecialchars($review['rating']); ?>/5</p>
+                        <div class="review-header">
+                            <span class="material-symbols-outlined">person</span><p><strong><?php echo htmlspecialchars($review['user_name']); ?></strong></p>
+                            <p><em>Posted on <?php echo htmlspecialchars($review['date_posted']); ?></em></p>
+                        </div>
                         <p><?php echo htmlspecialchars($review['review_text']); ?></p>
-                        <p><em>Posted on <?php echo htmlspecialchars($review['date_posted']); ?></em></p>
                     </div>
                 <?php endforeach; ?>
                 <?php else: ?>
