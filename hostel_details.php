@@ -1,8 +1,12 @@
 <?php
+
+ini_set('display_errors', 1); // These three lines displays errors in the output
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 include('header.php');
 include('db_connect.php');
 
-echo "YO";
 
 // Get the hostel ID from the URL in each hostel's anchor tag
 $hostel_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
