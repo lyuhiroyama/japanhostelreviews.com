@@ -17,7 +17,6 @@
         border: 1px solid #bababa;
         color: white;
         text-align: center;
-        opacity: 0.5;
     }
     
 

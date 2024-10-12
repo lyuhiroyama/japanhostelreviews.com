@@ -1,8 +1,8 @@
 <?php
 
-ini_set('display_errors', 1); // These three lines displays errors in the output
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1); // These three lines displays errors in the output
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 include('header.php');
 include('db_connect.php');
@@ -18,11 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_name = htmlspecialchars($_POST['user_name']);
     $rating = intval($_POST['rating']);
     $review_text = htmlspecialchars($_POST['review_text']);
-
-    echo $hostel_id;
-    echo $user_name;
-    echo $rating;
-    echo $review_text;
     
 
     // Insert the review into the database
@@ -31,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $insert_stmt->bindParam(':user_name', $user_name, PDO::PARAM_STR);
     $insert_stmt->bindParam(':rating', $rating, PDO::PARAM_INT);
     $insert_stmt->bindParam(':review_text', $review_text, PDO::PARAM_STR);
-    $insert_stmt->execute();
+    $insert_stmt->execute(); // Remember to set parent dir permission mode -> 777, and db files to -> 775.
     
     
     // Redirect to the same page to avoid resubmission on refresh
