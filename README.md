@@ -1,1 +1,3 @@
-# HHR
+# JHR
+
+Japan Hostel Reviews
