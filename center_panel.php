@@ -74,11 +74,13 @@
                 // Handle upvlote/downvote clicks:
                 $('.upvote').click( function() {
                     const hostelId = $(this).data('id');
-                    updateVote(hostelId, 'upvote');
+                    let bool = trackHostelVote(hostelId, 'upvote');
+                    if (bool) {updateVote(hostelId, 'upvote')};
                 });
                 $('.downvote').click( function() {
                     const hostelId = $(this).data('id');
-                    updateVote(hostelId, 'downvote');
+                    let bool = trackHostelVote(hostelId, 'downvote');
+                    if (bool) {updateVote(hostelId, 'downvote')};
                 });
             
             })
@@ -90,6 +92,18 @@
                 fetchHostels();
             })
         } // endof updateVote()
+
+        function trackHostelVote(hostelId, voteType) {
+            let voteKey = `hostelVote_${hostelId}`;
+            let existingVote = localStorage.getItem(voteKey);
+            
+            if (!existingVote) {
+                localStorage.setItem(voteKey, voteType);
+                return true;
+            } else {
+                return false;
+            }
+        } // endof trackHostelVote()
 
 
         $(document).ready(fetchHostels);

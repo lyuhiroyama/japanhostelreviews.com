@@ -1,4 +1,4 @@
-<?php
+<?php // Used in center_panel.php
 
     include('db_connect.php');
 
