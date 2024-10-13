@@ -40,7 +40,6 @@
         // Fetch & Dipslay hostels
         function fetchHostels() {
             $.getJSON('get_hostels.php', function(hostels) {
-                $('#hostel-list').empty();
                 hostels.forEach(hostel => {
                     $('.center-panel').append(`
                         <div class="hostel-container">
@@ -71,8 +70,27 @@
                         <hr>
                     `)
                 })
+            
+                // Handle upvlote/downvote clicks:
+                $('.upvote').click( function() {
+                    const hostelId = $(this).data('id');
+                    updateVote(hostelId, 'upvote');
+                });
+                $('.downvote').click( function() {
+                    const hostelId = $(this).data('id');
+                    updateVote(hostelId, 'downvote');
+                });
+            
             })
-        }
+        } // endof fetchHostels()
+
+        function updateVote(hostelId, voteType) {
+            $.post('update_vote.php', {id: hostelId, vote: voteType}, () => {
+                $('.center-panel').empty();
+                fetchHostels();
+            })
+        } // endof updateVote()
+
 
         $(document).ready(fetchHostels);
         
