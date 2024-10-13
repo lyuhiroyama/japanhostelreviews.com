@@ -10,7 +10,8 @@ try {
         name TEXT NOT NULL,
         location TEXT,
         price_range TEXT,
-        rating REAL,
+        upvote INTEGER DEFAULT 0,
+        downvote INTEGER DEFAULT 0,
         description TEXT,
         thumbnail TEXT
     )");
@@ -19,7 +20,7 @@ try {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         hostel_id INTEGER,
         user_name TEXT NOT NULL,
-        rating REAL,
+        rating INTEGER,
         review_text TEXT,
         date_posted DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (hostel_id) REFERENCES hostels(id) ON DELETE CASCADE

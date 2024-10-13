@@ -14,3 +14,20 @@ hr {
 img {
     border-radius: 20px;
 }
+
+.voting-container {
+    display: flex;
+    align-items: center;
+}
+
+.voting-container button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5em;
+}
+
+.vote-count {
+    margin: 0 10px;
+    font-size: 1.2em;
+}
