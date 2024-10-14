@@ -162,6 +162,11 @@ $reviews = $review_stmt->fetchAll(PDO::FETCH_ASSOC);
                             <p><em>Posted on <?php echo htmlspecialchars($review['date_posted']); ?></em></p>
                         </div>
                         <p><?php echo htmlspecialchars($review['review_text']); ?></p>
+                        <div class="voting-container">
+                            <button class="upvote" data-id="${hostel.id}">⬆️</button>
+                            <span class="vote-count">someNum</span>
+                            <button class="downvote" data-id="${hostel.id}">⬇️</button>
+                        </div>
                     </div>
                 <?php endforeach; ?>
                 <?php else: ?>
