@@ -16,15 +16,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Get the data from the form
     $user_name = htmlspecialchars($_POST['user_name']);
-    $rating = intval($_POST['rating']);
     $review_text = htmlspecialchars($_POST['review_text']);
     
 
     // Insert the review into the database
-    $insert_stmt = $conn->prepare("INSERT INTO reviews (hostel_id, user_name, rating, review_text) VALUES (:hostel_id, :user_name, :rating, :review_text)");
+    $insert_stmt = $conn->prepare("INSERT INTO reviews (hostel_id, user_name, review_text) VALUES (:hostel_id, :user_name, :review_text)");
     $insert_stmt->bindParam(':hostel_id', $hostel_id, PDO::PARAM_INT);
     $insert_stmt->bindParam(':user_name', $user_name, PDO::PARAM_STR);
-    $insert_stmt->bindParam(':rating', $rating, PDO::PARAM_INT);
     $insert_stmt->bindParam(':review_text', $review_text, PDO::PARAM_STR);
     $insert_stmt->execute(); // Remember to set parent dir permission mode -> 777, and db files to -> 775.
     
@@ -147,7 +145,6 @@ $reviews = $review_stmt->fetchAll(PDO::FETCH_ASSOC);
             <!-- Review submission form -->
             <form id="review-form" method="POST" action="hostel_details.php?id=<?php echo $hostel_id; ?>">
                 <input type="text" name="user_name" placeholder="Your Name" required>
-                <input type="number" name="rating" placeholder="Rating (1-5)" min="1" max="5" required>
                 <textarea name="review_text" placeholder="Write your review..." required></textarea>
                 <button type="submit">Submit Review</button>
             </form>

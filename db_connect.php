@@ -20,8 +20,9 @@ try {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         hostel_id INTEGER,
         user_name TEXT NOT NULL,
-        rating INTEGER,
         review_text TEXT,
+        upvote INTEGER DEFAULT 0,
+        downvote INTEGER DEFAULT 0,
         date_posted DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (hostel_id) REFERENCES hostels(id) ON DELETE CASCADE
     )");
