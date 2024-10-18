@@ -149,30 +149,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             </form>
 
             <!-- Reviews -->
-
             <div id="reviews"></div>
-
-            <!-- <div id="reviews">
-                <?php if ($reviews): ?>
-                <?php foreach ($reviews as $review): ?>
-                    <div class="review">
-                        <div class="review-header">
-                            <span class="material-symbols-outlined">person</span><p><strong><?php echo htmlspecialchars($review['user_name']); ?></strong></p>
-                            <p><em>Posted on <?php echo htmlspecialchars($review['date_posted']); ?></em></p>
-                        </div>
-                        <p><?php echo htmlspecialchars($review['review_text']); ?></p>
-                        <div class="voting-container" data-id="${reviews.id}">
-                            <button class="upvote" data-id="<?php echo $review['id']; ?>">⬆️</button>
-                            <span class="vote-count"><?php echo $review['upvote'] - $review['downvote']; ?></span>
-                            <button class="downvote" data-id="${review.hostel_id}">⬇️</button>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-                <?php else: ?>
-                    <p>No reviews yet.</p>
-                <?php endif; ?>
-
-            </div> -->
 
         </div>
         
@@ -223,46 +200,30 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
 
         $('.downvote').click(function () {
             const reviewId = $(this).data('id');
-            if (trackVote(reviewId, 'downvote')) updateVote(reviewId, 'upvote');
+            if (trackVote(reviewId, 'downvote')) updateVote(reviewId, 'downvote');
         });
     } // endof bindVoteButtons()
+
+    // Track review votes in localStorage:
+    function trackVote(reviewId, voteType) {
+        let voteKey = `reviewVote_${reviewId}`;
+        if (!localStorage.getItem(voteKey)) {
+            localStorage.setItem(voteKey, voteType);
+            return true;
+        }
+        return false;
+     } // endof trackVote()
+
+    // Update review vote count via AJAX then refresh review:
+    function updateVote(reviewId, voteType) {
+        $.post('update_review_votes.php', {id: reviewId, vote: voteType}, () => {
+            fetchReviews();
+        }, 'json');
+    } // endof updateVote()
 
     $(document).ready(function() {
         fetchReviews();
     });
-
-    // // Handle upvlote/downvote clicks:
-    // $('.upvote').click( function() {
-    //     const hostelId = $(this).data('id');
-    //     alert(hostelId);
-    //     let bool = trackReviewVote(hostelId, 'upvote');
-    //     if (bool) {updateVote(hostelId, 'upvote')};
-    // });
-
-    // $('.downvote').click( function() {
-    //     const hostelId = $(this).data('id');
-    //     let bool = trackReviewVote(hostelId, 'downvote');
-    //     if (bool) {updateVote(hostelId, 'downvote')};
-    // });
-
-    // function trackHostelVote(hostelId, voteType) {
-    //     let voteKey = `hostelVote_${hostelId}`;
-    //     let existingVote = localStorage.getItem(voteKey);
-        
-    //     if (!existingVote) {
-    //         localStorage.setItem(voteKey, voteType);
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // } // endof trackHostelVote()
-
-    // function updateVote(hostelId, voteType) {
-    //         $.post('update_review_votes.php', {id: hostelId, vote: voteType}, (response) => {
-    //             const voteCountSpan = $(`[data-id=${reviews.id}] .vote-count`);
-    //             voteCountSpan.text(response.newVoteCount); // Update the span with the new vote count
-    //         }, "json");
-    // } // endof updateVote()
 
     </script>
 
