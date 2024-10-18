@@ -14,7 +14,7 @@ $hostel_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 // Handle the review submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // Get the data from the form
+    // Get data from the form
     $user_name = htmlspecialchars($_POST['user_name']);
     $review_text = htmlspecialchars($_POST['review_text']);
     
@@ -41,10 +41,10 @@ $stmt->execute();
 $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Fetch hostel reviews
-$review_stmt = $conn->prepare("SELECT * FROM reviews WHERE hostel_id = :id");
-$review_stmt->bindParam(':id', $hostel_id, PDO::PARAM_INT);
-$review_stmt->execute();
-$reviews = $review_stmt->fetchAll(PDO::FETCH_ASSOC);
+// $review_stmt = $conn->prepare("SELECT * FROM reviews WHERE hostel_id = :id");
+// $review_stmt->bindParam(':id', $hostel_id, PDO::PARAM_INT);
+// $review_stmt->execute();
+// $reviews = $review_stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -140,8 +140,6 @@ $reviews = $review_stmt->fetchAll(PDO::FETCH_ASSOC);
                 <img src="<?php echo htmlspecialchars($hostel['thumbnail']); ?>">
             </div>
 
-            <!-- <input id="review-input" type="text" placeholder="Add a review"> -->
-
             <!-- Review submission form -->
             <form id="review-form" method="POST" action="hostel_details.php?id=<?php echo $hostel_id; ?>">
                 <input type="text" name="user_name" placeholder="Your Name" required>
@@ -149,8 +147,11 @@ $reviews = $review_stmt->fetchAll(PDO::FETCH_ASSOC);
                 <button type="submit">Submit Review</button>
             </form>
 
+            <!-- Reviews -->
 
-            <div id="reviews">
+            <div id="reviews"></div>
+
+            <!-- <div id="reviews">
                 <?php if ($reviews): ?>
                 <?php foreach ($reviews as $review): ?>
                     <div class="review">
@@ -159,10 +160,10 @@ $reviews = $review_stmt->fetchAll(PDO::FETCH_ASSOC);
                             <p><em>Posted on <?php echo htmlspecialchars($review['date_posted']); ?></em></p>
                         </div>
                         <p><?php echo htmlspecialchars($review['review_text']); ?></p>
-                        <div class="voting-container">
-                            <button class="upvote" data-id="${hostel.id}">⬆️</button>
-                            <span class="vote-count">someNum</span>
-                            <button class="downvote" data-id="${hostel.id}">⬇️</button>
+                        <div class="voting-container" data-id="${reviews.id}">
+                            <button class="upvote" data-id="<?php echo $review['id']; ?>">⬆️</button>
+                            <span class="vote-count"><?php echo $review['upvote'] - $review['downvote']; ?></span>
+                            <button class="downvote" data-id="${review.hostel_id}">⬇️</button>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -170,10 +171,11 @@ $reviews = $review_stmt->fetchAll(PDO::FETCH_ASSOC);
                     <p>No reviews yet.</p>
                 <?php endif; ?>
 
-            </div>
+            </div> -->
 
         </div>
-
+        
+        <!-- Right panel -->
         <div class="hostel-info-right-panel">
             <h3><?php echo htmlspecialchars($hostel['name']); ?></h2>
             <p><?php echo htmlspecialchars($hostel['description']); ?></p>
@@ -185,7 +187,47 @@ $reviews = $review_stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
 
-    
+    <script>
+
+    // Fetch reviews via AJAX
+    function fetchReviews() {
+        $.getJSON()
+    }
+
+    // // Handle upvlote/downvote clicks:
+    // $('.upvote').click( function() {
+    //     const hostelId = $(this).data('id');
+    //     alert(hostelId);
+    //     let bool = trackReviewVote(hostelId, 'upvote');
+    //     if (bool) {updateVote(hostelId, 'upvote')};
+    // });
+
+    // $('.downvote').click( function() {
+    //     const hostelId = $(this).data('id');
+    //     let bool = trackReviewVote(hostelId, 'downvote');
+    //     if (bool) {updateVote(hostelId, 'downvote')};
+    // });
+
+    // function trackHostelVote(hostelId, voteType) {
+    //     let voteKey = `hostelVote_${hostelId}`;
+    //     let existingVote = localStorage.getItem(voteKey);
+        
+    //     if (!existingVote) {
+    //         localStorage.setItem(voteKey, voteType);
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // } // endof trackHostelVote()
+
+    // function updateVote(hostelId, voteType) {
+    //         $.post('update_review_votes.php', {id: hostelId, vote: voteType}, (response) => {
+    //             const voteCountSpan = $(`[data-id=${reviews.id}] .vote-count`);
+    //             voteCountSpan.text(response.newVoteCount); // Update the span with the new vote count
+    //         }, "json");
+    // } // endof updateVote()
+
+    </script>
 
 </body>
 </html>

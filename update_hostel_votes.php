@@ -9,7 +9,7 @@
 
         if ($vote === 'upvote') {
             $stmt = $conn -> prepare("UPDATE hostels SET upvote = upvote + 1 WHERE id = :id");
-        } elseif ($vote = 'downvote') {
+        } elseif ($vote === 'downvote') {
             $stmt = $conn -> prepare("UPDATE hostels SET downvote = downvote + 1 WHERE id = :id");
         }
 

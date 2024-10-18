@@ -87,7 +87,7 @@
         } // endof fetchHostels()
 
         function updateVote(hostelId, voteType) {
-            $.post('update_vote.php', {id: hostelId, vote: voteType}, () => {
+            $.post('update_hostel_votes.php', {id: hostelId, vote: voteType}, () => {
                 $('.center-panel').empty();
                 fetchHostels();
             })
