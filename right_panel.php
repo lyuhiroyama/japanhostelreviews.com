@@ -5,7 +5,7 @@
             margin: 20px 20px;
             padding: 30px;
             border-radius: 15px;
-            background-color: #f9f5ea;
+            background-color: #f7efda;
             width: 250px;
         }
     </style>

@@ -18,6 +18,7 @@ include("header.php");
         justify-content: space-between;
         height: auto;
         margin-top: 60px;
+        background-color: #faf8f2; 
     }
     </style>
 </head>

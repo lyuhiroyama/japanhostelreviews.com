@@ -52,15 +52,16 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"> <!-- import Google Material Icons -->
     <link rel="stylesheet" href="styles.css">
     <style>
+        
         .panel-container {
             display: flex;
             justify-content: space-between;
-            height: 100%;
+            min-height: 100vh;
             margin-top: 60px;
+            background-color: #faf8f2; 
         }
         .center-panel {
             margin-left: 270px;
-            height: 100%;
             flex-grow: 1; /* Fills rest of the space. Without this center-panel shortens in width. */
             display: flex;
             flex-direction: column;
@@ -80,13 +81,39 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             max-width: 750px;
         }
 
-        #review-input {            
+        #review-form {
+            display: flex;
+            flex-direction: column;
+            width: 100%; /* 100% of its container */
+            max-width: 750px;
+        }
+
+        #review-form #username-input {
+            width: 200px;
+            height: 40px;
+            border-radius: 25px; 
+            padding-left: 18px;
+        }
+
+
+        #review-form #review-input {            
             border-radius: 25px; 
             border: 1px solid #bababa;
             padding: 10px 20px;
             width: 100%; /* 100% of its container */
             max-width: 750px;
             height: 40px;
+            margin: 10px 0;
+        }
+
+        #review-form #submit-button {
+            width: 120px;
+            height: 30px;
+            border-radius: 25px; 
+        }
+
+        #review-form #submit-button:hover {
+            background-color: #d69d11;
         }
 
         #reviews {
@@ -135,7 +162,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             margin: 20px 20px;
             padding: 30px;
             border-radius: 15px;
-            background-color: #f9f5ea; /* For stronger orange-yellow: #f3e7ca */
+            background-color: #f7efda; /* For stronger orange-yellow: #f3e7ca */
             width: 250px; 
         }
 
@@ -164,9 +191,9 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
 
             <!-- Review submission form -->
             <form id="review-form" method="POST" action="hostel_details.php?id=<?php echo $hostel_id; ?>">
-                <input type="text" name="user_name" placeholder="Your Name" required>
-                <textarea name="review_text" placeholder="Write your review..." required></textarea>
-                <button type="submit">Submit Review</button>
+                <input id="username-input" type="text" name="user_name" placeholder="Display Name" autocomplete="off" required>
+                <textarea id="review-input" name="review_text" placeholder="Add a review" required></textarea>
+                <button id="submit-button" type="submit">Submit Review</button>
             </form>
 
             <!-- Reviews -->
@@ -215,13 +242,13 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
     // Function which binds event listeners to vote buttons:
     function bindVoteButtons() {
         $('.upvote').click(function () {
-            $(this).addClass('active-upvote');
+            // $(this).addClass('active-upvote');
             const reviewId = $(this).data('id');
             if (trackVote(reviewId, 'upvote')) updateVote(reviewId, 'upvote');
         });
 
         $('.downvote').click(function () {
-            $(this).addClass('active-downvote');
+            // $(this).addClass('active-downvote');
             const reviewId = $(this).data('id');
             if (trackVote(reviewId, 'downvote')) updateVote(reviewId, 'downvote');
         });
