@@ -1,8 +1,8 @@
 <?php
 
-// ini_set('display_errors', 1); // These three lines displays errors in the output
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
+ini_set('display_errors', 1); // These three lines displays errors in the output
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 include('header.php');
 include('db_connect.php');
@@ -54,6 +54,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($hostel['name']); ?> - Hostel Reviews</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"> <!-- import Google Material Icons -->
     <link rel="stylesheet" href="styles.css">
     <style>
@@ -181,7 +182,6 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             <p><?php echo htmlspecialchars($hostel['description']); ?></p>
             <p>Location: <?php echo htmlspecialchars($hostel['location']); ?></p>
             <p>Price Range: <?php echo htmlspecialchars($hostel['price_range']); ?></p>
-            <p>Rating: <?php echo htmlspecialchars($hostel['rating']); ?></p>
         </div>
 
     </div>
@@ -191,8 +191,31 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // Fetch reviews via AJAX
     function fetchReviews() {
-        $.getJSON()
-    }
+        $.getJSON('get_reviews.php?id=<?php echo $hostel_id ?>', function(reviews) {
+            $('#reviews').empty();
+            if (reviews.length > 0) {
+                reviews.forEach(review => {
+                    $('#reviews').append(`
+                        <div class="review">
+                            <p><strong>${review.user_name}</strong> - <em>${review.date_posted}</em></p>
+                            <p>${review.review_text}</p>
+                            <div class="voting-container" data-id="${review.id}">
+                                <button class="upvote" data-id="${review.id}">⬆</button>
+                                <span class="vote-count">${review.upvote - review.downvote}</span>
+                                <button class="downvote" data-id="${review.id}">⬇</button>
+                            </div>
+                        </div>
+                    `)
+                })
+            } else {
+                $('#reviews').html('<p>No reviews yet.</p>');
+            }
+        })
+    } // endof fetchReviews()
+
+    $(document).ready(function() {
+        fetchReviews();
+    });
 
     // // Handle upvlote/downvote clicks:
     // $('.upvote').click( function() {
