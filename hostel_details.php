@@ -40,12 +40,6 @@ $stmt->bindParam(':id', $hostel_id, PDO::PARAM_INT);
 $stmt->execute();
 $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Fetch hostel reviews
-// $review_stmt = $conn->prepare("SELECT * FROM reviews WHERE hostel_id = :id");
-// $review_stmt->bindParam(':id', $hostel_id, PDO::PARAM_INT);
-// $review_stmt->execute();
-// $reviews = $review_stmt->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
 
 <!DOCTYPE html>
@@ -105,9 +99,36 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             margin: 30px 0;
         }
 
-        .review-header {
-            display: flex;
+        .review-voting-container button {
+            color: #d69d11;
+            font-size: 20px;
+            border: none;
+            background-color: transparent;
+            width: 30px;
+            height: 30px;
         }
+
+        .review-voting-container button:hover {
+            background-color: #f3e7ca;
+            border-radius: 10px;
+        }
+
+        /* .review-voting-container button.active-upvote {
+            color: red;
+            background-color: #f3e7ca;
+            border-radius: 10px;
+        }
+
+        .review-voting-container button.active-downvote {
+            color: blue;
+            background-color: #f3e7ca;
+            border-radius: 10px;
+        } */
+
+        .review-voting-container span {
+            margin: 0 2px; /* Spacing */
+        }
+        
 
         .hostel-info-right-panel {
             height: 100%;
@@ -174,9 +195,9 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
                 reviews.forEach(review => {
                     $('#reviews').append(`
                         <div class="review">
-                            <p><strong>${review.user_name}</strong> - <em>${review.date_posted}</em></p>
+                            <p><strong>${review.user_name}</strong>  <em>${review.date_posted}</em></p>
                             <p>${review.review_text}</p>
-                            <div class="voting-container" data-id="${review.id}">
+                            <div class="review-voting-container" data-id="${review.id}">
                                 <button class="upvote" data-id="${review.id}">⬆</button>
                                 <span class="vote-count">${review.upvote - review.downvote}</span>
                                 <button class="downvote" data-id="${review.id}">⬇</button>
@@ -194,11 +215,13 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
     // Function which binds event listeners to vote buttons:
     function bindVoteButtons() {
         $('.upvote').click(function () {
+            $(this).addClass('active-upvote');
             const reviewId = $(this).data('id');
             if (trackVote(reviewId, 'upvote')) updateVote(reviewId, 'upvote');
         });
 
         $('.downvote').click(function () {
+            $(this).addClass('active-downvote');
             const reviewId = $(this).data('id');
             if (trackVote(reviewId, 'downvote')) updateVote(reviewId, 'downvote');
         });
