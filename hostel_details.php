@@ -207,11 +207,25 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
                         </div>
                     `)
                 })
+                bindVoteButtons();
             } else {
                 $('#reviews').html('<p>No reviews yet.</p>');
             }
         })
     } // endof fetchReviews()
+
+    // Function which binds event listeners to vote buttons:
+    function bindVoteButtons() {
+        $('.upvote').click(function () {
+            const reviewId = $(this).data('id');
+            if (trackVote(reviewId, 'upvote')) updateVote(reviewId, 'upvote');
+        });
+
+        $('.downvote').click(function () {
+            const reviewId = $(this).data('id');
+            if (trackVote(reviewId, 'downvote')) updateVote(reviewId, 'upvote');
+        });
+    } // endof bindVoteButtons()
 
     $(document).ready(function() {
         fetchReviews();
