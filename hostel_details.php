@@ -127,7 +127,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
         }
 
         .review-voting-container button {
-            color: #d69d11;
+            color: #a3780d;
             font-size: 20px;
             border: none;
             background-color: transparent;
@@ -138,6 +138,10 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
         .review-voting-container button:hover {
             background-color: #f3e7ca;
             border-radius: 10px;
+        }
+
+        .review-voting-container span {
+            margin: 0 2px; /* Spacing */
         }
 
         /* .review-voting-container button.active-upvote {
@@ -152,10 +156,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             border-radius: 10px;
         } */
 
-        .review-voting-container span {
-            margin: 0 2px; /* Spacing */
-        }
-        
+       
 
         .hostel-info-right-panel {
             height: 100%;

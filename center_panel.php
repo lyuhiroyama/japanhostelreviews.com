@@ -30,6 +30,24 @@
         h3.hostel-title a:visited {
             color: grey;
         }
+
+        .hostel-voting-container button {
+            color: #a3780d;
+            font-size: 20px;
+            border: none;
+            background-color: transparent;
+            width: 30px;
+            height: 30px;
+        }
+
+        .hostel-voting-container button:hover {
+            background-color: #f3e7ca;
+            border-radius: 10px;
+        }
+
+        .hostel-voting-container span {
+            margin: 0 2px; /* Spacing */
+        }
     </style>
 </head>
 
@@ -56,10 +74,10 @@
                                         <p>${hostel.description}</p>
                                         <p>Location: ${hostel.location}</p>
                                         <p>Price Range: ${hostel.price_range}</p>
-                                        <div class="voting-container">
-                                            <button class="upvote" data-id="${hostel.id}">⬆️</button>
+                                        <div class="hostel-voting-container">
+                                            <button class="upvote" data-id="${hostel.id}">⬆</button>
                                             <span class="vote-count">${hostel.upvote - hostel.downvote}</span>
-                                            <button class="downvote" data-id="${hostel.id}">⬇️</button>
+                                            <button class="downvote" data-id="${hostel.id}">⬇</button>
                                         </div>
 
                                     </div>
