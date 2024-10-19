@@ -1,8 +1,8 @@
 <?php
 
-ini_set('display_errors', 1); // These three lines displays errors in the output
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1); // These three lines displays errors in the output
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 include('header.php');
 include('db_connect.php');
@@ -199,6 +199,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
 
             <!-- Reviews -->
             <div id="reviews"></div>
+            <button id="see-more">View more reviews</button>
 
         </div>
         
@@ -214,11 +215,14 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
     <script>
+        
+    let reviewOffset = 0;
+    let reviewLimit = 10;
 
     // Fetch reviews via AJAX
     function fetchReviews() {
-        $.getJSON('get_reviews.php?id=<?php echo $hostel_id ?>', function(reviews) {
-            $('#reviews').empty();
+        $.getJSON(`get_reviews.php?id=<?php echo $hostel_id ?>&reviewOffset=${reviewOffset}&reviewLimit=${reviewLimit}`, function(reviews) {
+            // $('#reviews').empty(); Maybe delete this later. Not sure atm.
             if (reviews.length > 0) {
                 reviews.forEach(review => {
                     $('#reviews').append(`
@@ -234,8 +238,13 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
                     `)
                 })
                 bindVoteButtons();
-            } else {
+                reviewOffset += reviewLimit; // +10 to offset to prevent same review from being queried.
+                $('#see-more').show();
+            } else if (offset == 0) {
+                $('#see-more').hide();
                 $('#reviews').html('<p>No reviews yet.</p>');
+            } else {
+                $('#see-more').hide();
             }
         })
     } // endof fetchReviews()
@@ -271,6 +280,10 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             fetchReviews();
         }, 'json');
     } // endof updateVote()
+
+    $('#see-more').click(function() {
+        fetchReviews();
+    });
 
     $(document).ready(function() {
         fetchReviews();
