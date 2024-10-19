@@ -309,7 +309,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if (voteType === 'upvote') {
                 $voteCount.text(currentVoteCount + 1);
-            } else if (voteType === 'downVote') {
+            } else if (voteType === 'downvote') {
                 $voteCount.text(currentVoteCount - 1);
             }
 
