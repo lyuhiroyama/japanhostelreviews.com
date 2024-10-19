@@ -251,7 +251,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
                 reviews.forEach(review => {
                     $('#reviews').append(`
                         <div class="review">
-                            <p><strong>${review.user_name}</strong>  <em>${review.date_posted}</em></p>
+                            <p><strong>${review.user_name}</strong>  <em>${timeAgo(review.date_posted)}</em></p>
                             <p>${review.review_text}</p>
                             <div class="review-voting-container" data-id="${review.id}">
                                 <button class="upvote" data-id="${review.id}">⬆</button>
@@ -315,6 +315,26 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
 
         }, 'json');
     } // endof updateVote()
+
+    function timeAgo(date) { // To convert post date to "__ ago"
+        const now = new Date();
+        const past = new Date(date + ' UTC');
+        const diff = now - past; // Difference in milliseconds
+
+        const seconds = Math.floor(diff / 1000);
+        const minutes = Math.floor(seconds / 60);
+        const hours = Math.floor(minutes / 60);
+        const days = Math.floor(hours / 24);
+        const months = Math.floor(days / 30);
+        const years = Math.floor(days / 365);
+
+        if (minutes < 1) return `${seconds}s ago`;
+        if (minutes < 60) return `${minutes}m ago`;
+        if (hours < 24) return `${hours}h ago`;
+        if (days < 30) return `${days}d ago`;
+        if (months < 12) return `${months}mo ago`;
+        return `${years}y ago`;
+    }
 
     $('#see-more-button').click(function() {
         fetchReviews();
