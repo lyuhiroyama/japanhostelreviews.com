@@ -156,7 +156,28 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             border-radius: 10px;
         } */
 
-       
+       #see-more-button {
+        font-size: 15px;
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        padding: 5px 15px;
+        margin-bottom: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+       }
+
+       #see-more-button:hover {
+        background-color: #802a21;
+       }
+
+       #see-more-button span { /* Reverse caret */
+        position: relative;
+        top: 3px;
+       }
 
         .hostel-info-right-panel {
             height: 100%;
@@ -199,7 +220,10 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
 
             <!-- Reviews -->
             <div id="reviews"></div>
-            <button id="see-more">View more reviews</button>
+            <button id="see-more-button">
+                <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                View more reviews
+            </button>
 
         </div>
         
@@ -239,12 +263,12 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
                 })
                 bindVoteButtons();
                 reviewOffset += reviewLimit; // +10 to offset to prevent same review from being queried.
-                $('#see-more').show();
+                $('#see-more-button').show();
             } else if (offset == 0) {
-                $('#see-more').hide();
+                $('#see-more-button').hide();
                 $('#reviews').html('<p>No reviews yet.</p>');
             } else {
-                $('#see-more').hide();
+                $('#see-more-button').hide();
             }
         })
     } // endof fetchReviews()
@@ -281,7 +305,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
         }, 'json');
     } // endof updateVote()
 
-    $('#see-more').click(function() {
+    $('#see-more-button').click(function() {
         fetchReviews();
     });
 
