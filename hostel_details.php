@@ -263,7 +263,8 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
                 })
                 bindVoteButtons();
                 reviewOffset += reviewLimit; // +10 to offset to prevent same review from being queried.
-                $('#see-more-button').show();
+                // Keep 'see more reviews' button from displaying once all reviews are displayed.
+                reviews.length < reviewLimit ? $('#see-more-button').hide() : $('#see-more-button').show(); 
             } else if (offset == 0) {
                 $('#see-more-button').hide();
                 $('#reviews').html('<p>No reviews yet.</p>');
@@ -301,7 +302,17 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
     // Update review vote count via AJAX then refresh review:
     function updateVote(reviewId, voteType) {
         $.post('update_review_votes.php', {id: reviewId, vote: voteType}, () => {
-            fetchReviews();
+
+            // Update upvote/downvote num here instead of calling fetchReviews()
+            let $voteCount = $(`.review-voting-container[data-id='${reviewId}']`).find('.vote-count');
+            let currentVoteCount = parseInt($voteCount.text());
+
+            if (voteType === 'upvote') {
+                $voteCount.text(currentVoteCount + 1);
+            } else if (voteType === 'downVote') {
+                $voteCount.text(currentVoteCount - 1);
+            }
+
         }, 'json');
     } // endof updateVote()
 

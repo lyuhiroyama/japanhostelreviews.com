@@ -21,7 +21,7 @@ try {
         hostel_id INTEGER,
         user_name TEXT NOT NULL,
         review_text TEXT,
-        upvote INTEGER DEFAULT 0,
+        upvote INTEGER DEFAULT 1,
         downvote INTEGER DEFAULT 0,
         date_posted DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (hostel_id) REFERENCES hostels(id) ON DELETE CASCADE
