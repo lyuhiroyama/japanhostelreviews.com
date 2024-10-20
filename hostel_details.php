@@ -246,7 +246,12 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
     // Fetch reviews via AJAX
     function fetchReviews() {
         $.getJSON(`get_reviews.php?id=<?php echo $hostel_id ?>&reviewOffset=${reviewOffset}&reviewLimit=${reviewLimit}`, function(reviews) {
-            // $('#reviews').empty(); Maybe delete this later. Not sure atm.
+            
+            if (sessionStorage.getItem('newReviewSubmitted')) {
+                reviews.shift(); // Remove the new review prepended @submission.
+                sessionStorage.removeItem('newReviewSubmitted');
+            }
+
             if (reviews.length > 0) {
                 reviews.forEach(review => {
                     $('#reviews').append(`
@@ -265,7 +270,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
                 reviewOffset += reviewLimit; // +10 to offset to prevent same review from being queried.
                 // Keep 'see more reviews' button from displaying once all reviews are displayed.
                 reviews.length < reviewLimit ? $('#see-more-button').hide() : $('#see-more-button').show(); 
-            } else if (offset == 0) {
+            } else if (reviewOffset == 0) { // When there are no reviews
                 $('#see-more-button').hide();
                 $('#reviews').html('<p>No reviews yet.</p>');
             } else {
@@ -335,6 +340,34 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
         if (months < 12) return `${months}mo ago`;
         return `${years}y ago`;
     }
+
+    // Tried to pre-pend new review just for that session but later chose to work on ordering reviews from most upvotes first, hence the comment-out:
+
+    // $('#review-form').submit(function(event) { 
+    //     // event.preventDefault(); // Prevent form submission default page reload mechanism.
+
+    //     const review = {
+    //     user_name: $('#username-input').val(),
+    //     review_text: $('#review-input').val(),
+    //     date_posted: new Date() // .toISOString() not sure if I need this
+    //     };
+
+    //     $.post('get_reviews.php', review, function(response) {
+            
+    //         $('#reviews').prepend(`
+    //             <div class="review">
+    //                 <p><strong>${review.user_name}</strong> <em>${timeAgo(review.date_posted)}</em></p>
+    //                 <p>${review.review_text}</p>
+    //                 <div class="review-voting-container">
+    //                     <button class="upvote">⬆</button>
+    //                     <span class="vote-count">0</span>
+    //                     <button class="downvote">⬇</button>
+    //                 </div>
+    //             </div>
+    //         `);
+    //         sessionStorage.setItem('newReviewSubmitted', 'true');
+    //     }, 'json');
+    // })
 
     $('#see-more-button').click(function() {
         fetchReviews();
