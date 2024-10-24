@@ -128,6 +128,14 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             margin: 30px 0;
         }
 
+        .review .review-text {
+            margin: 10px 0;
+        }
+
+        .review .review-username-timestamp {
+            font-size: 15px;
+        }
+
         .review em {
             color: #757575;
         }
@@ -262,8 +270,10 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
                 reviews.forEach(review => {
                     $('#reviews').append(`
                         <div class="review">
-                            <p><strong>${review.user_name}</strong>  <em>•  ${timeAgo(review.date_posted)}  •</em></p>
-                            <p>${review.review_text}</p>
+                            <p class="review-username-timestamp">
+                                <strong>${review.user_name}</strong>  <em>•  ${timeAgo(review.date_posted)}  •</em>
+                            </p>
+                            <p class="review-text">${review.review_text}</p>
                             <div class="review-voting-container" data-id="${review.id}">
                                 <button class="upvote" data-id="${review.id}">⬆</button>
                                 <span class="vote-count">${review.upvote - review.downvote}</span>
