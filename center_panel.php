@@ -31,6 +31,15 @@
             color: grey;
         }
 
+        .hostel-voting-container {
+            margin: 5px 0;
+            width: auto; /* Adjusts width to fit its contents dynamically */
+            border-radius: 50px;
+            background-color: #e6deca;
+            display: inline-flex;
+            align-items: center;
+        }
+
         .hostel-voting-container button {
             color: #a3780d;
             font-size: 20px;
@@ -41,12 +50,13 @@
         }
 
         .hostel-voting-container button:hover {
+            color: #ff0000;
             background-color: #f3e7ca;
-            border-radius: 10px;
+            border-radius: 50px;
         }
 
         .hostel-voting-container span {
-            margin: 0 2px; /* Spacing */
+            margin: 0 3px; /* Spacing */
         }
     </style>
 </head>
