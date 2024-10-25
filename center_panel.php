@@ -32,7 +32,7 @@
         }
 
         .hostel-voting-container {
-            margin: 5px 0;
+            margin: 10px 0;
             width: auto; /* Adjusts width to fit its contents dynamically */
             border-radius: 50px;
             background-color: #e6deca;
@@ -56,7 +56,8 @@
         }
 
         .hostel-voting-container span {
-            margin: 0 3px; /* Spacing */
+            margin: 0 5px; /* Spacing */
+            font-size: 16px;
         }
     </style>
 </head>
