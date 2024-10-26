@@ -150,6 +150,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
         }
 
         .review-voting-container button:hover {
+            color: #ff0000;
             background-color: #f3e7ca;
             border-radius: 10px;
         }
