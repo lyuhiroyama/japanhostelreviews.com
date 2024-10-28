@@ -58,7 +58,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             justify-content: space-between;
             min-height: 100vh;
             margin-top: 60px;
-            background-color: #faf8f2; 
+            background-color: #fcfaf5; 
         }
         .center-panel {
             margin-left: 270px;
@@ -195,7 +195,9 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
        }
 
         .hostel-info-right-panel {
-            height: 100%;
+            position: fixed;
+            right: 20px; /* position it 20px from the right */
+            height: auto;
             margin: 20px 20px;
             padding: 30px;
             border-radius: 15px;
