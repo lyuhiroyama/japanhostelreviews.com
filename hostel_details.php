@@ -116,6 +116,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             border-radius: 25px; 
             border: none;
             background-color: #805c05;
+            align-self: flex-end; /* Place button to the right, not left. */
         }
 
         #review-form #submit-button:hover {
