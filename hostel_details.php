@@ -94,6 +94,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             border-radius: 25px; 
             padding-left: 18px;
             background-color: #faf8f2;
+            border: 1px solid #bababa;
         }
 
 
@@ -109,13 +110,16 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
         }
 
         #review-form #submit-button {
+            color: white;
             width: 120px;
-            height: 30px;
+            height: 40px;
             border-radius: 25px; 
+            border: none;
+            background-color: #805c05;
         }
 
         #review-form #submit-button:hover {
-            background-color: #d69d11;
+            background-color: #5e4403;
         }
 
         #reviews {
