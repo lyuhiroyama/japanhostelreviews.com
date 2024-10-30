@@ -35,10 +35,26 @@
         width: 400px; 
     }
 
-    .header-buttons {
-        margin: 10px;
+    .sign-in-up-buttons-container {
+        display: flex;
+        border: 1px solid black;
+        border-radius: 20px;
+        margin-right: 10px;
+        overflow: hidden; /* incase letters go over the border */
     }
 
+    .sign-in-up-buttons-container .sign-in-up-buttons {
+        padding: 10px 20px;
+    }
+
+    .sign-in-up-buttons-container .sign-in-up-buttons:hover {
+        background-color: #e6deca;
+    }
+
+    .sign-in-up-buttons + .sign-in-up-buttons { 
+        /* + is an adjacent sibling selector. Targets the second button, hence border-LEFT: */
+        border-left: 1px solid black;
+    }
 
 </style>
 
@@ -48,7 +64,13 @@
         <div>
             <input id="search-box" type="text" placeholder="Search">
         </div>
-        <a href="idk" class="header-buttons"><p>Create Account</p></a>
+        <div class="sign-in-up-buttons-container">
+            <a href="idk yet" class="sign-in-up-buttons">Sign in</a>
+            <a href="idk yet" class="sign-in-up-buttons">Sign up</a>
+        </div>
+
+
+
 
     </div>
 </header>
