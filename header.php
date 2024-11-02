@@ -69,7 +69,7 @@
             <a href="idk yet" class="sign-in-up-buttons">Sign in</a>
             <a href="idk yet" class="sign-in-up-buttons">Sign up</a>
         </div>
-
+        
 
 
 

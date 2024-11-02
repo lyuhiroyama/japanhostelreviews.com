@@ -66,9 +66,21 @@
 <body>
     <div class="center-panel"></div>
     <script>
+
+        $(document).ready(function() {
+            fetchHostels(); // Initial fetch
+
+            $('#search-box').on('input', function() {
+                const query = $(this).val();
+                fetchHostels(query);
+            })
+        })
+
         // Fetch & Dipslay hostels
-        function fetchHostels() {
-            $.getJSON('get_hostels.php', function(hostels) {
+        function fetchHostels(query = '') {
+            $.getJSON('get_hostels.php', {q: query}, function(hostels) {
+                $('.center-panel').empty(); // Clear previous results
+                
                 hostels.forEach(hostel => {
                     $('.center-panel').append(`
                         <div class="hostel-container">
@@ -132,9 +144,6 @@
                 return false;
             }
         } // endof trackHostelVote()
-
-
-        $(document).ready(fetchHostels);
         
     </script>
 </body>
