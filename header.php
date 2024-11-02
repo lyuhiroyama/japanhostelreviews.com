@@ -41,6 +41,7 @@
         border-radius: 20px;
         margin-right: 10px;
         overflow: hidden; /* incase letters go over the border */
+        background-color: #faf8f2;
     }
 
     .sign-in-up-buttons-container .sign-in-up-buttons {

@@ -17,7 +17,7 @@
         }
 
         .hostel-info { /* container with info excluding thumbnail */
-            padding: 20px;
+            padding: 0 20px;
         }
         
 
@@ -82,7 +82,6 @@
                                             ${hostel.name}
                                             </a>
                                         </h3>
-                                        <p>${hostel.description}</p>
                                         <p>Location: ${hostel.location}</p>
                                         <p>Price Range: ${hostel.price_range}</p>
                                         <div class="hostel-voting-container">
