@@ -18,6 +18,7 @@
 
         .hostel-info { /* container with info excluding thumbnail */
             padding: 0 20px;
+            line-height: 1.5;
         }
         
 

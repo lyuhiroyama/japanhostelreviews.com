@@ -27,7 +27,7 @@ include("header.php");
         
             <?php include 'left_panel.php';?>
             <?php include 'center_panel.php';?>
-            <?php include 'right_panel.php';?>
+            <!-- <?php include 'right_panel.php';?> Comment out right-panel in home page for now. -->
 
         
     </div>
