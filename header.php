@@ -28,11 +28,13 @@
 
 
     #search-box {
-        background-color: #f0f0f0; 
+        background-color: #e5ebee; 
         border-radius: 25px; 
-        border: 1px solid #bababa;
+        border: 1px solid transparent;
         padding: 10px 20px;
+        height:40px;
         width: 400px; 
+        font-size: 16px;
     }
 
     .sign-in-up-buttons-container {
@@ -63,7 +65,7 @@
     <div class="top-menu">
         <a href="index.php" style="color:white;"><img src="assets/header-logo.png" id="header-logo"></a>
         <div>
-            <input id="search-box" type="text" placeholder="Search">
+            <input id="search-box" type="text" placeholder="Search hostels here!">
         </div>
         <div class="sign-in-up-buttons-container">
             <a href="idk yet" class="sign-in-up-buttons">Sign in</a>
