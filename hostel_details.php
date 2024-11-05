@@ -88,15 +88,6 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             max-width: 750px;
         }
 
-        #review-form #username-input {
-            width: 200px;
-            height: 40px;
-            border-radius: 25px; 
-            padding-left: 18px;
-            background-color: #faf8f2;
-            border: 1px solid #bababa;
-        }
-
 
         #review-form #review-input {            
             border-radius: 25px; 
@@ -109,6 +100,16 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             background-color: #faf8f2;
         }
 
+        #review-form #username-input {
+            width: 200px;
+            height: 40px;
+            border-radius: 25px; 
+            padding-left: 18px;
+            margin-bottom: 10px;
+            background-color: #faf8f2;
+            border: 1px solid #bababa;
+        }
+
         #review-form #submit-button {
             color: white;
             width: 120px;
@@ -116,7 +117,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             border-radius: 25px; 
             border: none;
             background-color: #805c05;
-            align-self: flex-end; /* Place button to the right, not left. */
+            align-self: flex-start; /* Place button to the right, not left. */
         }
 
         #review-form #submit-button:hover {
@@ -235,8 +236,8 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
 
             <!-- Review submission form -->
             <form id="review-form" method="POST" action="hostel_details.php?id=<?php echo $hostel_id; ?>">
-                <input id="username-input" type="text" name="user_name" placeholder="Display Name" autocomplete="off" required>
                 <textarea id="review-input" name="review_text" placeholder="Add a review" required></textarea>
+                <input id="username-input" type="text" name="user_name" placeholder="Display Name" autocomplete="off" required>
                 <button id="submit-button" type="submit">Submit Review</button>
             </form>
 
