@@ -67,11 +67,8 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             flex-direction: column;
             align-items: center;
         }
-        .hostel-info {
-            padding: 30px;
-        }
 
-        h2 { /* hostel title (center panel) */
+        .hostel-info-center h2 { /* hostel title (center panel) */
             padding: 20px;
         }
 
@@ -80,6 +77,36 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             width: 100%; /* 100% of its container */
             max-width: 750px;
         }
+
+        .hostel-info-center .hostel-voting-container2 {
+            margin: 10px 0;
+            width: fit-content; /* Adjusts width to fit its contents dynamically */
+            border-radius: 50px;
+            background-color: #e6deca;
+            display: flex;
+            align-items: center;
+        }
+
+        .hostel-info-center .hostel-voting-container2 button {
+            color: #a3780d;
+            font-size: 20px;
+            border: none;
+            background-color: transparent;
+            width: 30px;
+            height: 30px;
+        }
+
+        .hostel-info-center .hostel-voting-container2 button:hover {
+            color: #ff0000;
+            background-color: #f3e7ca;
+            border-radius: 10px;
+        }
+
+        .hostel-info-center .hostel-voting-container2 span {
+            margin: 0 2px; /* Spacing */
+        }   
+
+
 
         #review-form {
             display: flex;
@@ -232,6 +259,12 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="hostel-info-center">
                 <h2><?php echo htmlspecialchars($hostel['name']); ?></h2>
                 <img src="<?php echo htmlspecialchars($hostel['thumbnail']); ?>">
+                <div class="hostel-voting-container2"> 
+                    <!-- class of the same name exists in center_panel.php already, hence '2' -->
+                    <button class="upvote" data-id="<?php echo $hostel_id; ?>">⬆</button>
+                    <span class="vote-count"><?php echo ($hostel['upvote'] - $hostel['downvote']); ?></span>
+                    <button class="downvote" data-id="<?php echo $hostel_id; ?>">⬇</button>
+                </div>
             </div>
 
             <!-- Review submission form -->
