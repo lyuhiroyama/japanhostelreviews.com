@@ -433,6 +433,55 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
 
     $(document).ready(function() {
         fetchReviews();
+
+        // Function to handle upvote
+        $('.hostel-voting-container2 .upvote').click(function() {
+            const hostelId = $(this).data('id');
+            if (trackHostelVote(hostelId, 'upvote')) {
+                updateHostelVote(hostelId, 'upvote', $(this));
+            }
+        });
+
+        // Function to handle downvote
+        $('.hostel-voting-container2 .downvote').click(function() {
+            const hostelId = $(this).data('id');
+            if (trackHostelVote(hostelId, 'downvote')) {
+                updateHostelVote(hostelId, 'downvote', $(this));
+            }
+        });
+
+        // Function to track votes using localStorage
+        function trackHostelVote(hostelId, voteType) {
+            let voteKey = `hostelVote_${hostelId}`;
+            let existingVote = localStorage.getItem(voteKey);
+
+            if (!existingVote) {
+                localStorage.setItem(voteKey, voteType);
+                return true;
+            }
+            return false;
+        }
+
+        // Function to send AJAX request to update votes
+        function updateHostelVote(hostelId, voteType, buttonElement) {
+            $.post('update_hostel_votes.php', { id: hostelId, vote: voteType }, function(response) {
+                if (response.status === 'success') {
+                    // Update the vote count dynamically
+                    let $voteCount = buttonElement.siblings('.vote-count');
+                    let currentVote = parseInt($voteCount.text());
+
+                    if (voteType === 'upvote') {
+                        $voteCount.text(currentVote + 1);
+                    } else if (voteType === 'downvote') {
+                        $voteCount.text(currentVote - 1);
+                    }
+                } else {
+                    alert('Failed to update vote. Please try again.');
+                }
+            }, 'json').fail(function() {
+                alert('Error communicating with the server.');
+            });
+        }
     });
 
     </script>
