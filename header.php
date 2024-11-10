@@ -55,11 +55,27 @@
 
         .sign-in-up-buttons-container .sign-in-up-buttons:hover {
             background-color: #e6deca;
+            cursor: pointer;
         }
 
         .sign-in-up-buttons + .sign-in-up-buttons { 
             /* + is an adjacent sibling selector. Targets the second button, hence border-LEFT: */
             border-left: 1px solid black;
+        }
+
+        /* Modals: */
+
+        .close-modal {
+            position: absolute;
+            color: #666;
+            top: 15px;
+            right: 20px;
+            font-size: 35px;
+        }
+
+        .close-modal:hover {
+            color: #333;
+            cursor: pointer;
         }
 
         #sign-up-modal {
@@ -75,11 +91,47 @@
             padding: 50px;
             border: 1px solid black;
             border-radius: 20px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        #sign-up-modal h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #sign-up-modal .sign-up-modal-subheading {
+            margin-bottom: 40px;
         }
 
         #sign-up-modal form {
             display: none;
             flex-direction: column;
+            gap: 15px;
+        }
+
+        #sign-up-modal form input {
+            background-color: #e5ebee; 
+            border-radius: 4px; 
+            border: 1px solid transparent;
+            padding: 10px 20px;            
+            font-size: 16px;
+        }
+
+        #sign-up-modal form #sign-up-submit-button {
+            background-color: #e7dfc9;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            width: 60%;
+            cursor: pointer;
+            margin: 10px auto 0;
+            font-size: 16px;
+            font-weight: bold;
+            color: #262524; /* less black than black */
+        }
+
+        #sign-up-modal form #sign-up-submit-button:hover {
+            background-color: #ffb366;
         }
 
 
@@ -102,13 +154,14 @@
 
     <div id="sign-up-modal">
         <span class="close-modal">&times;</span>
-        <h2>Sign up</h2>
-        <form>
+        <h2>Ready to add a review?</h2>
+        <p class="sign-up-modal-subheading">No password required. We'll email you a link to sign in with!</p>
+        <form autocomplete="off">
             <label>Username *</label>
             <input type="text" name="username" id="username">
             <label>Email *</label>
             <input type="email" name="email" id="email">
-            <button type="submit">Sign up</button>
+            <button id="sign-up-submit-button" type="submit">Sign up</button>
         </form>
     </div>
 </body>
@@ -119,5 +172,9 @@
             $('#sign-up-modal').fadeIn();
             $('#sign-up-modal form').css('display', 'flex');
         });
+
+        $('.close-modal').on('click', function() {
+            $('#sign-up-modal').hide();
+        })
     });
 </script>
