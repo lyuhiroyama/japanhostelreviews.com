@@ -78,7 +78,7 @@
             cursor: pointer;
         }
 
-        #sign-up-modal {
+        .modal {
             display: none;
             position: fixed; /* Needed for z-index to work */
             z-index: 1000;
@@ -87,37 +87,37 @@
             left: 50%;
             transform: translate(-50%, -50%); 
             /* ⬆️ Additional offset. 'top' and 'left' did not suffice. */
-            
             padding: 50px;
             border: 1px solid black;
             border-radius: 20px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
 
-        #sign-up-modal h2 {
+        .modal h2 {
             margin-bottom: 20px;
             text-align: center;
         }
 
-        #sign-up-modal .sign-up-modal-subheading {
+        .modal .sign-in-up-modal-subheading {
             margin-bottom: 40px;
         }
 
-        #sign-up-modal form {
+        .modal form {
             display: none;
             flex-direction: column;
             gap: 15px;
         }
 
-        #sign-up-modal form input {
+        .modal form input {
             background-color: #e5ebee; 
             border-radius: 4px; 
             border: 1px solid transparent;
-            padding: 10px 20px;            
+            padding: 10px 20px;
+            margin-bottom: 10px;        
             font-size: 16px;
         }
 
-        #sign-up-modal form #sign-up-submit-button {
+        .modal form .sign-in-up-submit-button {
             background-color: #e7dfc9;
             border: none;
             border-radius: 20px;
@@ -130,7 +130,7 @@
             color: #262524; /* less black than black */
         }
 
-        #sign-up-modal form #sign-up-submit-button:hover {
+        .modal form .sign-in-up-submit-button:hover {
             background-color: #ffb366;
         }
 
@@ -152,16 +152,24 @@
         </div>
     </header>
 
-    <div id="sign-up-modal">
+    <div class="modal" id="sign-up-modal">
         <span class="close-modal">&times;</span>
         <h2>Ready to add a review?</h2>
-        <p class="sign-up-modal-subheading">No password required. We'll email you a link to sign in with!</p>
+        <p class="sign-in-up-modal-subheading">No password required. We'll email you a link to sign in with!</p>
         <form autocomplete="off">
-            <label>Username *</label>
-            <input type="text" name="username" id="username">
-            <label>Email *</label>
-            <input type="email" name="email" id="email">
-            <button id="sign-up-submit-button" type="submit">Sign up</button>
+            <input type="text" name="username" id="username" placeholder="Username">
+            <input type="email" name="email" id="email" placeholder="review@email.com">
+            <button class="sign-in-up-submit-button" type="submit">Sign up</button>
+        </form>
+    </div>
+
+    <div class="modal" id="sign-in-modal">
+        <span class="close-modal">&times;</span>
+        <h2>Welcome back!</h2>
+        <p class="sign-in-up-modal-subheading">No password required. We'll email you a link to sign in with!</p>
+        <form autocomplete="off">
+            <input type="email" name="email" id="email" placeholder="review@email.com">
+            <button class="sign-in-up-submit-button" type="submit">Sign in</button>
         </form>
     </div>
 </body>
@@ -173,8 +181,13 @@
             $('#sign-up-modal form').css('display', 'flex');
         });
 
+        $('#sign-in-button').on('click', function() {
+            $('#sign-in-modal').fadeIn();
+            $('#sign-in-modal form').css('display', 'flex');
+        });
+
         $('.close-modal').on('click', function() {
-            $('#sign-up-modal').hide();
+            $('.modal').hide();
         })
     });
 </script>
