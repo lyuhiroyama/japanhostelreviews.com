@@ -177,17 +177,19 @@
 <script>
     $(document).ready(function() {
         $('#sign-up-button').on('click', function() {
+            $('.modal').hide();
             $('#sign-up-modal').fadeIn();
             $('#sign-up-modal form').css('display', 'flex');
         });
 
         $('#sign-in-button').on('click', function() {
+            $('.modal').hide();
             $('#sign-in-modal').fadeIn();
             $('#sign-in-modal form').css('display', 'flex');
         });
 
         $('.close-modal').on('click', function() {
-            $('.modal').hide();
+            $('.modal').fadeOut();
         })
     });
 </script>
