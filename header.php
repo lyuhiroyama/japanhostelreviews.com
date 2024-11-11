@@ -157,8 +157,8 @@
         <h2>Ready to add a review?</h2>
         <p class="sign-in-up-modal-subheading">No password required. We'll email you a link to sign in with!</p>
         <form autocomplete="off">
-            <input type="text" name="username" id="username" placeholder="Username">
-            <input type="email" name="email" id="email" placeholder="review@email.com">
+            <input type="text" name="username" id="username" placeholder="Username" required>
+            <input type="email" name="email" id="email" placeholder="review@email.com" required>
             <button class="sign-in-up-submit-button" type="submit">Sign up</button>
         </form>
     </div>
@@ -168,7 +168,7 @@
         <h2>Welcome back!</h2>
         <p class="sign-in-up-modal-subheading">No password required. We'll email you a link to sign in with!</p>
         <form autocomplete="off">
-            <input type="email" name="email" id="email" placeholder="review@email.com">
+            <input type="email" name="email" id="email" placeholder="review@email.com" required>
             <button class="sign-in-up-submit-button" type="submit">Sign in</button>
         </form>
     </div>
@@ -191,5 +191,10 @@
         $('.close-modal').on('click', function() {
             $('.modal').fadeOut();
         })
+
+        $('.modal form').on('submit', function(e) {
+            e.preventDefault();
+            alert("Sent! Check your inbox for the log in link. If you don't see it, check your spam box too!");
+        });
     });
 </script>
