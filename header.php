@@ -134,6 +134,17 @@
             background-color: #ffb366;
         }
 
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
 
 
     </style>
@@ -172,24 +183,29 @@
             <button class="sign-in-up-submit-button" type="submit">Sign in</button>
         </form>
     </div>
+
+    <div class="modal-overlay"></div>
 </body>
 
 <script>
     $(document).ready(function() {
         $('#sign-up-button').on('click', function() {
             $('.modal').hide();
+            $('.modal-overlay').fadeIn();
             $('#sign-up-modal').fadeIn();
             $('#sign-up-modal form').css('display', 'flex');
         });
 
         $('#sign-in-button').on('click', function() {
             $('.modal').hide();
+            $('.modal-overlay').fadeIn();
             $('#sign-in-modal').fadeIn();
             $('#sign-in-modal form').css('display', 'flex');
         });
 
         $('.close-modal').on('click', function() {
             $('.modal').fadeOut();
+            $('.modal-overlay').fadeOut();
         })
 
         $('.modal form').on('submit', function(e) {

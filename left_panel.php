@@ -10,6 +10,7 @@
             width: 270px; 
             background-color: #ffffff; 
             border-right: 1px solid #ccc; 
+            z-index: 100;
         }
         
         .left-panel ul li {
