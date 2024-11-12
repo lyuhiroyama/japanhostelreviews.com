@@ -203,14 +203,19 @@
             $('#sign-in-modal form').css('display', 'flex');
         });
 
-        $('.close-modal').on('click', function() {
-            $('.modal').fadeOut();
-            $('.modal-overlay').fadeOut();
-        })
-
         $('.modal form').on('submit', function(e) {
             e.preventDefault();
             alert("Sent! Check your inbox for the log in link. If you don't see it, check your spam box too!");
+        });
+
+        $('.close-modal').on('click', function() {
+            $('.modal').fadeOut();
+            $('.modal-overlay').fadeOut();
+        });
+
+        $('.modal-overlay').on('click', function() {
+            $('.modal').fadeOut();
+            $('.modal-overlay').fadeOut();
         });
     });
 </script>
