@@ -1,10 +1,9 @@
 <?php
 
-// ini_set('display_errors', 1); // These three lines displays errors in the output
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
+ini_set('display_errors', 1); // These three lines displays errors in the output
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-include('header.php');
 include('db_connect.php');
 
 
@@ -31,7 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: hostel_details.php?id=$hostel_id");
     exit();
 }
-
+include('header.php');
+/* 
+placed here for the following reason: header() must be called before any actual output is sent, either by normal HTML tags, blank lines in a file, or from PHP. It is a very common error to read code with include, or require, functions, or another file access function, and have spaces or empty lines that are output before header() is called.
+*/
 
 
 // Fetch hostel details
