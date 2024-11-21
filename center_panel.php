@@ -48,6 +48,7 @@
             background-color: transparent;
             width: 30px;
             height: 30px;
+            cursor: pointer;
         }
 
         .hostel-voting-container button:hover {

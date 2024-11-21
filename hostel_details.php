@@ -96,6 +96,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             background-color: transparent;
             width: 30px;
             height: 30px;
+            cursor: pointer;
         }
 
         .hostel-info-center .hostel-voting-container2 button:hover {
@@ -182,6 +183,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             background-color: transparent;
             width: 30px;
             height: 30px;
+            cursor: pointer;
         }
 
         .review-voting-container button:hover {
