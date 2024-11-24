@@ -152,6 +152,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
 
         #review-form #submit-button:hover {
             background-color: #5e4403;
+            cursor: pointer;
         }
 
         #reviews {
