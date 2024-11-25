@@ -308,11 +308,6 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
     function fetchReviews() {
         $.getJSON(`get_reviews.php?id=<?php echo $hostel_id ?>&reviewOffset=${reviewOffset}&reviewLimit=${reviewLimit}`, function(reviews) {
             
-            if (sessionStorage.getItem('newReviewSubmitted')) {
-                reviews.shift(); // Remove the new review prepended @submission.
-                sessionStorage.removeItem('newReviewSubmitted');
-            }
-
             if (reviews.length > 0) {
                 reviews.forEach(review => {
                     $('#reviews').append(`
@@ -335,7 +330,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
                 reviews.length < reviewLimit ? $('#see-more-button').hide() : $('#see-more-button').show(); 
             } else if (reviewOffset == 0) { // When there are no reviews
                 $('#see-more-button').hide();
-                $('#reviews').html('<p>No reviews yet.</p>');
+                $('#reviews').html('<p id="no-reviews-message">No reviews yet.</p>');
             } else {
                 $('#see-more-button').hide();
             }
@@ -404,33 +399,6 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
         return `${years}y ago`;
     }
 
-    // Tried to pre-pend new review just for that session but later chose to work on ordering reviews from most upvotes first, hence the comment-out:
-
-    // $('#review-form').submit(function(event) { 
-    //     // event.preventDefault(); // Prevent form submission default page reload mechanism.
-
-    //     const review = {
-    //     user_name: $('#username-input').val(),
-    //     review_text: $('#review-input').val(),
-    //     date_posted: new Date() // .toISOString() not sure if I need this
-    //     };
-
-    //     $.post('get_reviews.php', review, function(response) {
-            
-    //         $('#reviews').prepend(`
-    //             <div class="review">
-    //                 <p><strong>${review.user_name}</strong> <em>${timeAgo(review.date_posted)}</em></p>
-    //                 <p>${review.review_text}</p>
-    //                 <div class="review-voting-container">
-    //                     <button class="upvote">⬆</button>
-    //                     <span class="vote-count">0</span>
-    //                     <button class="downvote">⬇</button>
-    //                 </div>
-    //             </div>
-    //         `);
-    //         sessionStorage.setItem('newReviewSubmitted', 'true');
-    //     }, 'json');
-    // })
 
     $('#see-more-button').click(function() {
         fetchReviews();
@@ -487,6 +455,43 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
                 alert('Error communicating with the server.');
             });
         }
+    });
+
+    $('#review-form').submit(function(event) { 
+        event.preventDefault(); // Prevent form submission default page reload mechanism.
+        
+        const formData = $(this).serialize();
+        const review = {
+            user_name: $('#username-input').val(),
+            review_text: $('#review-input').val(),
+            date_posted: new Date()
+        };
+
+        $.post($(this).attr('action'), formData, function(response) {
+            // Create the review element but hide it initially
+            const newReview = $(`
+                <div class="review" style="display: none;">
+                    <p class="review-username-timestamp">
+                        <strong>${review.user_name}</strong>  <em>•  just now  •</em>
+                    </p>
+                    <p class="review-text">${review.review_text}</p>
+                    <div class="review-voting-container" data-id="">
+                        <button class="upvote">⬆</button>
+                        <span class="vote-count">0</span>
+                        <button class="downvote">⬇</button>
+                    </div>
+                </div>
+            `);
+            
+            // Prepend the hidden review and then fade it in
+            $('#reviews').prepend(newReview);
+            newReview.fadeIn(600); // 600ms duration
+            
+            $('#review-input').val('');
+            $('#username-input').val('');
+            $('#no-reviews-message').remove();
+            bindVoteButtons();
+        });
     });
 
     </script>
