@@ -84,7 +84,7 @@
                 
                 hostels.forEach(hostel => {
                     $('.center-panel').append(`
-                        <div class="hostel-container">
+                        <div class="hostel-container" data-id="${hostel.id}">
 
                                 <div class="hostel">
                                     <a href="hostel_details.php?id=${hostel.id}">
@@ -128,10 +128,20 @@
         } // endof fetchHostels()
 
         function updateVote(hostelId, voteType) {
-            $.post('update_hostel_votes.php', {id: hostelId, vote: voteType}, () => {
-                $('.center-panel').empty();
-                fetchHostels();
-            })
+            $.post('update_hostel_votes.php', {id: hostelId, vote: voteType}, function(response) {
+                /*
+                For debugging:
+                console.log('Response:', response, 
+                            'Container found:', $(`.hostel-container[data-id="${hostelId}"]`).length > 0,
+                            'Vote span found:', $(`.hostel-container[data-id="${hostelId}"]`).find('.vote-count').length > 0);
+                */
+                const hostelContainer = $(`.hostel-container[data-id="${hostelId}"]`);
+                const voteCountSpan = hostelContainer.find('.vote-count');
+                voteCountSpan.text(response.newVoteCount);
+            }, 'json')
+            // .fail(function(jqXHR, textStatus, errorThrown) {  // Add error handling
+            //     console.log('AJAX Error:', textStatus, errorThrown);
+            // });
         } // endof updateVote()
 
         function trackHostelVote(hostelId, voteType) {
