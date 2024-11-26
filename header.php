@@ -145,7 +145,20 @@
             z-index: 999;
         }
 
+        @media screen and (max-width: 768px) {
+            #search-box {
+                width: 150px;
+            }
+            
+            #sign-in-up-buttons-container {
+                width: 150px;
+                margin: 0 10px;
+        }
 
+        .sign-in-up-buttons-container .sign-in-up-buttons {
+            padding: 10px 10px;
+            color: black;
+        }
 
     </style>
 </head>

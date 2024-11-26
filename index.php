@@ -20,8 +20,18 @@ include("header.php");
         margin-top: 60px;
         background-color: #faf8f2;
     }
+
+    @media screen and (max-width: 768px) {
+        .panel-container {
+            margin-left: 0px;
+        }
+    }
+
+
     </style>
 </head>
+
+
 <body>
     <div class="panel-container">
         
