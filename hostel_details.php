@@ -135,10 +135,16 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
         }
 
         .hostel-info-center .hostel-voting-container2 button:hover {
-            color: #ff0000;
             background-color: #f3e7ca;
             border-radius: 50px;
         }
+        .hostel-info-center .hostel-voting-container2 .upvote:hover {
+            color: #ff0000;
+        }
+        .hostel-info-center .hostel-voting-container2 .downvote:hover {
+            color: blue;
+        }
+
 
         .hostel-info-center .hostel-voting-container2 span {
             margin: 0 2px; /* Spacing */
@@ -227,6 +233,13 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             background-color: #f3e7ca;
             border-radius: 10px;
         }
+        .review-voting-container .upvote:hover {
+            color: #ff0000;
+        }
+        .review-voting-container .downvote:hover {
+            color: blue;
+        }
+
 
         .review-voting-container span {
             margin: 0 2px; /* Spacing */

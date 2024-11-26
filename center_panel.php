@@ -56,9 +56,14 @@
         }
 
         .hostel-voting-container button:hover {
-            color: #ff0000;
             background-color: #f3e7ca;
             border-radius: 50px;
+        }
+        .hostel-voting-container .upvote:hover {
+            color: #ff0000;
+        }
+        .hostel-voting-container .downvote:hover {
+            color: blue;
         }
 
         .hostel-voting-container span {
