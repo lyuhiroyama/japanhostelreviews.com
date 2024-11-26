@@ -96,7 +96,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             background-color: #fcfaf5; 
         }
         .center-panel {
-            margin-left: 270px;
+            margin-left: 290px; /* left-panel width (270px) + 20px for spacing */
             flex-grow: 1; /* Fills rest of the space. Without this center-panel shortens in width. */
             display: flex;
             flex-direction: column;
@@ -111,6 +111,8 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             padding-bottom: 15px;
             width: 100%; /* 100% of its container */
             max-width: 750px;
+            min-width: 250px;
+            max-height: 380px;
         }
 
         .hostel-info-center .hostel-voting-container2 {
@@ -135,7 +137,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
         .hostel-info-center .hostel-voting-container2 button:hover {
             color: #ff0000;
             background-color: #f3e7ca;
-            border-radius: 10px;
+            border-radius: 50px;
         }
 
         .hostel-info-center .hostel-voting-container2 span {
@@ -234,14 +236,14 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
         .review-voting-container button.active-upvote {
             color: red;
             background-color: #f3e7ca;
-            border-radius: 10px;
+            border-radius: 50px;
         }
 
         .hostel-voting-container2 button.active-downvote,
         .review-voting-container button.active-downvote {
             color: blue;
             background-color: #f3e7ca;
-            border-radius: 10px;
+            border-radius: 50px;
         }
 
        #see-more-button {
@@ -268,14 +270,17 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
        }
 
         .hostel-info-right-panel {
-            position: fixed;
+            position: sticky;
+            top: 80px;
+            align-self: flex-start; 
+            /* ⬆️ parent container is flex. This keeps sticky from working. align-self: flex-start;  coutners it. */
             right: 20px; /* position it 20px from the right */
             height: auto;
             margin: 20px 20px;
             padding: 30px;
             border-radius: 15px;
             background-color: #f7efda; /* For stronger orange-yellow: #f3e7ca */
-            width: 250px; 
+            min-width: 250px;
         }
 
         .hostel-info-right-panel h3 {
@@ -284,6 +289,18 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
 
         .hostel-info-right-panel p {
             padding: 10px;
+        }
+
+        @media screen and (max-width: 1300px) {
+            .center-panel {
+                margin: 0 25px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .hostel-info-right-panel {
+                display: none;
+            }
         }
         
     </style>
@@ -312,7 +329,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
 <body>
     <div class="panel-container">
 
-        <?php include('left_panel.php'); ?>
+        <?php include('left_panel_hostel_details.php'); ?>
 
         <div class="center-panel">
 
