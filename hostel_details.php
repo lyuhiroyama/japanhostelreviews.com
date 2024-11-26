@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 include('header.php');
 /* 
-placed here for the following reason: header() must be called before any actual output is sent, either by normal HTML tags, blank lines in a file, or from PHP. It is a very common error to read code with include, or require, functions, or another file access function, and have spaces or empty lines that are output before header() is called.
+placed here for the following reason: header() must be called before any actual output is sent, either by normal HTML tags, blank lines in a file, or from PHP. "It is a very common error to read code with include, or require, functions, or another file access function, and have spaces or empty lines that are output before header() is called."
 */
 
 
@@ -96,7 +96,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             background-color: #fcfaf5; 
         }
         .center-panel {
-            margin-left: 290px; /* left-panel width (270px) + 20px for spacing */
+            margin-left: 310px; /* left-panel width (270px) + 40px for spacing */
             flex-grow: 1; /* Fills rest of the space. Without this center-panel shortens in width. */
             display: flex;
             flex-direction: column;
@@ -197,7 +197,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
         }
 
         #reviews {
-            margin: 20px;
+            margin: 20px 0 20px 80px;
             width: 100%;
             max-width: 750px;
         }

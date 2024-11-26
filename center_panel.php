@@ -74,13 +74,13 @@
         .hostel-voting-container button.active-upvote {
             color: red;
             background-color: #f3e7ca;
-            border-radius: 10px;
+            border-radius: 50px;
         }
 
         .hostel-voting-container button.active-downvote {
             color: blue;
             background-color: #f3e7ca;
-            border-radius: 10px;
+            border-radius: 50px;
         }
 
         @media screen and (max-width: 768px) {
