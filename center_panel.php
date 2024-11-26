@@ -61,6 +61,18 @@
             margin: 0 5px; /* Spacing */
             font-size: 16px;
         }
+
+        .hostel-voting-container button.active-upvote {
+            color: red;
+            background-color: #f3e7ca;
+            border-radius: 10px;
+        }
+
+        .hostel-voting-container button.active-downvote {
+            color: blue;
+            background-color: #f3e7ca;
+            border-radius: 10px;
+        }
     </style>
 </head>
 
@@ -83,47 +95,56 @@
                 $('.center-panel').empty(); // Clear previous results
                 
                 hostels.forEach(hostel => {
+                    // Check localStorage for this hostel's vote
+                    const voteKey = `hostelVote_${hostel.id}`;
+                    const userVote = localStorage.getItem(voteKey);
+                    
+                    const upvoteClass = userVote === 'upvote' ? 'active-upvote' : '';
+                    const downvoteClass = userVote === 'downvote' ? 'active-downvote' : '';
+
                     $('.center-panel').append(`
                         <div class="hostel-container" data-id="${hostel.id}">
-
-                                <div class="hostel">
-                                    <a href="hostel_details.php?id=${hostel.id}">
-                                        <img src="${hostel.thumbnail}" class="thumbnail">
-                                    </a>
-                                    <div class="hostel-info">
-                                        <h3 class="hostel-title">
-                                            <a href="hostel_details.php?id=${hostel.id}">
-                                            ${hostel.name}
-                                            </a>
-                                        </h3>
-                                        <p>Location: ${hostel.location}</p>
-                                        <p>Price Range: ${hostel.price_range}</p>
-                                        <div class="hostel-voting-container">
-                                            <button class="upvote" data-id="${hostel.id}">⬆</button>
-                                            <span class="vote-count">${hostel.upvote - hostel.downvote}</span>
-                                            <button class="downvote" data-id="${hostel.id}">⬇</button>
-                                        </div>
-
+                            <div class="hostel">
+                                <a href="hostel_details.php?id=${hostel.id}">
+                                    <img src="${hostel.thumbnail}" class="thumbnail">
+                                </a>
+                                <div class="hostel-info">
+                                    <h3 class="hostel-title">
+                                        <a href="hostel_details.php?id=${hostel.id}">
+                                        ${hostel.name}
+                                        </a>
+                                    </h3>
+                                    <p>Location: ${hostel.location}</p>
+                                    <p>Price Range: ${hostel.price_range}</p>
+                                    <div class="hostel-voting-container">
+                                        <button class="upvote ${upvoteClass}" data-id="${hostel.id}">⬆</button>
+                                        <span class="vote-count">${hostel.upvote - hostel.downvote}</span>
+                                        <button class="downvote ${downvoteClass}" data-id="${hostel.id}">⬇</button>
                                     </div>
                                 </div>
-
+                            </div>
                         </div>
                         <hr>
                     `)
                 })
             
-                // Handle upvlote/downvote clicks:
-                $('.upvote').click( function() {
+                // Handle upvote/downvote clicks:
+                $('.upvote').click(function() {
                     const hostelId = $(this).data('id');
                     let bool = trackHostelVote(hostelId, 'upvote');
-                    if (bool) {updateVote(hostelId, 'upvote')};
+                    if (bool) {
+                        updateVote(hostelId, 'upvote');
+                        $(this).addClass('active-upvote');
+                    }
                 });
-                $('.downvote').click( function() {
+                $('.downvote').click(function() {
                     const hostelId = $(this).data('id');
                     let bool = trackHostelVote(hostelId, 'downvote');
-                    if (bool) {updateVote(hostelId, 'downvote')};
+                    if (bool) {
+                        updateVote(hostelId, 'downvote');
+                        $(this).addClass('active-downvote');
+                    }
                 });
-            
             })
         } // endof fetchHostels()
 

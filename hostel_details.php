@@ -53,6 +53,39 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"> <!-- import Google Material Icons -->
     <link rel="stylesheet" href="styles.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
     <style>
         
         .panel-container {
@@ -197,17 +230,19 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             margin: 0 2px; /* Spacing */
         }
 
-        /* .review-voting-container button.active-upvote {
+        .hostel-voting-container2 button.active-upvote,
+        .review-voting-container button.active-upvote {
             color: red;
             background-color: #f3e7ca;
             border-radius: 10px;
         }
 
+        .hostel-voting-container2 button.active-downvote,
         .review-voting-container button.active-downvote {
             color: blue;
             background-color: #f3e7ca;
             border-radius: 10px;
-        } */
+        }
 
        #see-more-button {
         font-size: 15px;
@@ -252,6 +287,26 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
         }
         
     </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </head>
 
 <body>
@@ -299,6 +354,28 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
     </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <script>
         
     let reviewOffset = 0;
@@ -310,6 +387,13 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
             
             if (reviews.length > 0) {
                 reviews.forEach(review => {
+                    // Check localStorage for this review's vote
+                    const voteKey = `reviewVote_${review.id}`;
+                    const userVote = localStorage.getItem(voteKey);
+                    
+                    const upvoteClass = userVote === 'upvote' ? 'active-upvote' : '';
+                    const downvoteClass = userVote === 'downvote' ? 'active-downvote' : '';
+
                     $('#reviews').append(`
                         <div class="review">
                             <p class="review-username-timestamp">
@@ -317,9 +401,9 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
                             </p>
                             <p class="review-text">${review.review_text}</p>
                             <div class="review-voting-container" data-id="${review.id}">
-                                <button class="upvote" data-id="${review.id}">⬆</button>
+                                <button class="upvote ${upvoteClass}" data-id="${review.id}">⬆</button>
                                 <span class="vote-count">${review.upvote - review.downvote}</span>
-                                <button class="downvote" data-id="${review.id}">⬇</button>
+                                <button class="downvote ${downvoteClass}" data-id="${review.id}">⬇</button>
                             </div>
                         </div>
                     `)
@@ -407,6 +491,17 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
     $(document).ready(function() {
         fetchReviews();
 
+        // Check and apply stored hostel vote on page load
+        const hostelId = <?php echo $hostel_id ?>;
+        const hostelVoteKey = `hostelVote_${hostelId}`;
+        const storedHostelVote = localStorage.getItem(hostelVoteKey);
+        
+        if (storedHostelVote === 'upvote') {
+            $('.hostel-voting-container2 .upvote').addClass('active-upvote');
+        } else if (storedHostelVote === 'downvote') {
+            $('.hostel-voting-container2 .downvote').addClass('active-downvote');
+        }
+
         // Function to handle upvote
         $('.hostel-voting-container2 .upvote').click(function() {
             const hostelId = $(this).data('id');
@@ -477,7 +572,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
                     <p class="review-text">${review.review_text}</p>
                     <div class="review-voting-container" data-id="">
                         <button class="upvote">⬆</button>
-                        <span class="vote-count">0</span>
+                        <span class="vote-count">1</span>
                         <button class="downvote">⬇</button>
                     </div>
                 </div>
