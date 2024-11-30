@@ -7,10 +7,9 @@ If you would like to take a look, feel free to reach out — I can make it publi
 
 Link: https://japanhostelreviews.com/
 
-
-
-
-
+<br>
+<br>
+<br>
 
 ## Screenshots
 
