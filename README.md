@@ -13,7 +13,7 @@ Link: https://japanhostelreviews.com/
     <img src="README-assets/demo-shot1.png" width="720"> 
     <img src="README-assets/demo-shot2.png" width="8000">
     <div>
-      <img src="README-assets/demo-shot3.png" width="300"> <div width="100"></div> <img src="README-assets/demo-shot4.png" width="300">
+      <img src="README-assets/demo-shot3.png" width="300"><img src="README-assets/demo-shot4.png" width="300">
     </div>
   </div>
 </body>  
