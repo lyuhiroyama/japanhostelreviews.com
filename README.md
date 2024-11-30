@@ -7,16 +7,8 @@ If you'd like to take a look, feel free to reach out — I can make it public up
 
 Link: https://japanhostelreviews.com/
 
-<head>
-  <styles>
-    div {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-  </styles>
-</head>
-<body>
+
+<body align="center">
   <div>
     <img src="README-assets/demo-shot1.png" width="720"> 
     <img src="README-assets/demo-shot2.png" width="8000">
