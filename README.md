@@ -7,5 +7,5 @@ If you'd like to take a look, feel free to reach out — I can make it public up
 
 Link: https://japanhostelreviews.com/
 
-<img src="README-assets/demo-shot1.png" width="600"> <img src="README-assets/demo-shot2.png" width="600">
-<img src="README-assets/demo-shot3.png" width="600"> <img src="README-assets/demo-shot4.png" width="600">
+<img src="README-assets/demo-shot1.png" width="820"> <img src="README-assets/demo-shot2.png" width="1000">
+<img src="README-assets/demo-shot3.png" width="400"> <img src="README-assets/demo-shot4.png" width="400">
