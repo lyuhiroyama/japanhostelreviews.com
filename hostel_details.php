@@ -601,9 +601,9 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
                     </p>
                     <p class="review-text">${review.review_text}</p>
                     <div class="review-voting-container" data-id="">
-                        <button class="upvote">⬆</button>
+                        <button class="upvote">&#x25b2</button>
                         <span class="vote-count">1</span>
-                        <button class="downvote">⬇</button>
+                        <button class="downvote">&#x25bc</button>
                     </div>
                 </div>
             `);
