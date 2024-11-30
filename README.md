@@ -9,6 +9,9 @@ Link: https://japanhostelreviews.com/
 
 
 
+
+
+
 ## Screenshots
 
 
