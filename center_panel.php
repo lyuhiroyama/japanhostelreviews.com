@@ -153,9 +153,9 @@
                                 <a class="hostel-thumbnail-container" href="hostel_details.php?id=${hostel.id}">
                                     <img src="${hostel.thumbnail}" class="thumbnail">
                                     <div class="hostel-voting-container relocation-768px"> 
-                                        <button class="upvote ${upvoteClass}" data-id="${hostel.id}">⬆</button>
+                                        <button class="upvote ${upvoteClass}" data-id="${hostel.id}">&#x25b2</button>
                                         <span class="vote-count">${hostel.upvote - hostel.downvote}</span>
-                                        <button class="downvote ${downvoteClass}" data-id="${hostel.id}">⬇</button>
+                                        <button class="downvote ${downvoteClass}" data-id="${hostel.id}">&#x25bc</button>
                                     </div>
                                 </a>
                                 <div class="hostel-info">
@@ -167,9 +167,9 @@
                                     <p>Location: ${hostel.location}</p>
                                     <p>Price Range: ${hostel.price_range}</p>
                                     <div class="hostel-voting-container main">
-                                        <button class="upvote ${upvoteClass}" data-id="${hostel.id}">⬆</button>
+                                        <button class="upvote ${upvoteClass}" data-id="${hostel.id}">&#x25b2</button>
                                         <span class="vote-count">${hostel.upvote - hostel.downvote}</span>
-                                        <button class="downvote ${downvoteClass}" data-id="${hostel.id}">⬇</button>
+                                        <button class="downvote ${downvoteClass}" data-id="${hostel.id}">&#x25bc</button>
                                     </div>
                                 </div>
                             </div>

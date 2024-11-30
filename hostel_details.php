@@ -351,9 +351,9 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
                 <img src="<?php echo htmlspecialchars($hostel['thumbnail']); ?>">
                 <div class="hostel-voting-container2"> 
                     <!-- class of the same name exists in center_panel.php already, hence '2' -->
-                    <button class="upvote" data-id="<?php echo $hostel_id; ?>">⬆</button>
+                    <button class="upvote" data-id="<?php echo $hostel_id; ?>">&#x25b2</button>
                     <span class="vote-count"><?php echo ($hostel['upvote'] - $hostel['downvote']); ?></span>
-                    <button class="downvote" data-id="<?php echo $hostel_id; ?>">⬇</button>
+                    <button class="downvote" data-id="<?php echo $hostel_id; ?>">&#x25bc</button>
                 </div>
             </div>
 
@@ -431,9 +431,9 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
                             </p>
                             <p class="review-text">${review.review_text}</p>
                             <div class="review-voting-container" data-id="${review.id}">
-                                <button class="upvote ${upvoteClass}" data-id="${review.id}">⬆</button>
+                                <button class="upvote ${upvoteClass}" data-id="${review.id}">&#x25b2</button>
                                 <span class="vote-count">${review.upvote - review.downvote}</span>
-                                <button class="downvote ${downvoteClass}" data-id="${review.id}">⬇</button>
+                                <button class="downvote ${downvoteClass}" data-id="${review.id}">&#x25bc</button>
                             </div>
                         </div>
                     `)
