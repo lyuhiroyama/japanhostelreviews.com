@@ -161,6 +161,17 @@
             }
         }
 
+        @media screen and (max-width: 480px) { /* For mobile devices in portrait mode. */
+            
+            .sign-in-up-buttons-container {
+                border: none; /* a black dot remains otherwise. */
+            }
+            
+            .sign-in-up-buttons {
+                display: none;
+            }
+        }
+
     </style>
 </head>
 <body>
