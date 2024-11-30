@@ -5,6 +5,8 @@ Welcome to Japan Hostel Reviews! This site is still under construction and is us
 
 If you would like to take a look, feel free to reach out — I can make it public upon request.
 
+Built with JS / HTML/CSS / JQuery / PHP / SQLite. Hosted on a VPS.
+
 Link: https://japanhostelreviews.com/
 
 <br>
