@@ -56,7 +56,7 @@
         }
 
         .hostel-voting-container button:hover {
-            background-color: #f3e7ca;
+            background-color: #e6deca;
             border-radius: 50px;
         }
         .hostel-voting-container .upvote:hover {
@@ -73,13 +73,13 @@
 
         .hostel-voting-container button.active-upvote {
             color: red;
-            background-color: #f3e7ca;
+            background-color: #e6deca;
             border-radius: 50px;
         }
 
         .hostel-voting-container button.active-downvote {
             color: blue;
-            background-color: #f3e7ca;
+            background-color: #e6deca;
             border-radius: 50px;
         }
 

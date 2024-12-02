@@ -135,7 +135,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
         }
 
         .hostel-info-center .hostel-voting-container2 button:hover {
-            background-color: #f3e7ca;
+            background-color: #e6deca;
             border-radius: 50px;
         }
         .hostel-info-center .hostel-voting-container2 .upvote:hover {
@@ -248,7 +248,7 @@ $hostel = $stmt->fetch(PDO::FETCH_ASSOC);
         .hostel-voting-container2 button.active-upvote,
         .review-voting-container button.active-upvote {
             color: red;
-            background-color: #f3e7ca;
+            background-color: #e6deca;
             border-radius: 50px;
         }
 
