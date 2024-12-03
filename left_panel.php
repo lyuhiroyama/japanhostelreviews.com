@@ -5,7 +5,7 @@
         
         .left-panel {
             position: fixed;
-            top: 65px;
+            top: 63px;
             height: 100%;
             width: 270px; 
             background-color: #ffffff; 
