@@ -178,7 +178,7 @@
     <header>
         <div class="top-menu">
             <a href="index.php" style="color:white;"><img src="assets/header-logo.png" id="header-logo"></a>
-            <h4 style="color: red;">Still in testing - not for actaul use.</h4>
+            <h4 style="color: red;">Still in development - not for actaul use.</h4>
             <div>
                 <input id="search-box" type="text" placeholder="Search hostels here!">
             </div>
