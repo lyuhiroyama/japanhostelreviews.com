@@ -1,9 +1,7 @@
 
 # Japan Hostel Reviews
 
-Welcome to Japan Hostel Reviews! This site is still under construction and is usually kept offline for security purposes while I work on setting up security and other features.
-
-If you would like to take a look, feel free to reach out — I can make it public upon request.
+Welcome to Japan Hostel Reviews! The site is currently under development, but feel free to click around.
 
 Built with JS / HTML/CSS / JQuery / PHP / SQLite. Hosted on a VPS.
 
