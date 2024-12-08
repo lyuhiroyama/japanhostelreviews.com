@@ -230,8 +230,18 @@
         });
 
         $('.modal form').on('submit', function(e) {
+            // e.preventDefault();
+            // alert("Sent! Check your inbox for the log in link. If you don't see it, check your spam box too!");
+
+            // Below is for email testing purposes:
             e.preventDefault();
-            alert("Sent! Check your inbox for the log in link. If you don't see it, check your spam box too!");
+            const email = $(this).find('input[type="email"]').val();
+            $.post('send_magic_link.php', {email: email}, function(response) {
+                console.log("Response received:", response);
+            }, 'json').fail(function(jqXHR, textStatus, errorThrown) {
+                console.error("Request failed: " + textStatus + ", " + errorThrown);
+            });
+            alert("Sent");
         });
 
         $('.close-modal').on('click', function() {

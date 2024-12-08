@@ -2,3 +2,7 @@
 /composer.phar
 /composer.lock
 /composer.json
+/node_modules/
+/package-lock.json
+/package.json
+
