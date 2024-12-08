@@ -233,7 +233,7 @@
             e.preventDefault();
             const formData = {
                 username: $('#sign-up-username').val(),
-                email: $('#sign-up-email').val();
+                email: $('#sign-up-email').val()
             };
             $.post('register_user.php', formData, function(response) {
                 console.log(response.message);

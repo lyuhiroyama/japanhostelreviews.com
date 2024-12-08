@@ -16,7 +16,7 @@ try {
         thumbnail TEXT
     )");
 
-    $conn -> exec(" CREATE TABLE IF NOT EXISTS reviews (
+    $conn -> exec("CREATE TABLE IF NOT EXISTS reviews (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         hostel_id INTEGER,
         user_name TEXT NOT NULL,
@@ -25,6 +25,12 @@ try {
         downvote INTEGER DEFAULT 0,
         date_posted DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (hostel_id) REFERENCES hostels(id) ON DELETE CASCADE
+    )");
+
+    $conn -> exec("CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT NOT NULL UNIQUE,
+        email TEXT NOT NULL UNIQUE
     )");
 
 } catch (PDOException $e) {
