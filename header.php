@@ -194,8 +194,8 @@
         <h2>Ready to add a review?</h2>
         <p class="sign-in-up-modal-subheading">No password required. We'll email you a link to sign in with!</p>
         <form autocomplete="off">
-            <input type="text" name="username" id="username" placeholder="Username" required>
-            <input type="email" name="email" id="email" placeholder="review@email.com" required>
+            <input type="text" name="username" id="sign-up-username" placeholder="Username" required>
+            <input type="email" name="email" id="sign-up-email" placeholder="review@email.com" required>
             <button class="sign-in-up-submit-button" type="submit">Sign up</button>
         </form>
     </div>
@@ -205,7 +205,7 @@
         <h2>Welcome back!</h2>
         <p class="sign-in-up-modal-subheading">No password required. We'll email you a link to sign in with!</p>
         <form autocomplete="off">
-            <input type="email" name="email" id="email" placeholder="review@email.com" required>
+            <input type="email" name="email" id="sign-in-email" placeholder="review@email.com" required>
             <button class="sign-in-up-submit-button" type="submit">Sign in</button>
         </form>
     </div>
@@ -229,19 +229,25 @@
             $('#sign-in-modal form').css('display', 'flex');
         });
 
-        $('.modal form').on('submit', function(e) {
-            // e.preventDefault();
-            // alert("Sent! Check your inbox for the log in link. If you don't see it, check your spam box too!");
+        $('#sign-up-modal form').on('submit', function(e) {
+            e.preventDefault();
+            const formData = {
+                username: $('#sign-up-username').val(),
+                email: $('#sign-up-email').val();
+            };
+            $.post('register_user.php', formData, function(response) {
+                console.log(response.message);
+            }, 'json');
 
             // Below is for email testing purposes:
-            e.preventDefault();
-            const email = $(this).find('input[type="email"]').val();
-            $.post('send_magic_link.php', {email: email}, function(response) {
-                console.log("Response received:", response);
-            }, 'json').fail(function(jqXHR, textStatus, errorThrown) {
-                console.error("Request failed: " + textStatus + ", " + errorThrown);
-            });
-            alert("Sent");
+            // e.preventDefault();
+            // const email = $(this).find('input[type="email"]').val();
+            // $.post('send_magic_link.php', {email: email}, function(response) {
+            //     console.log("Response received:", response);
+            // }, 'json').fail(function(jqXHR, textStatus, errorThrown) {
+            //     console.error("Request failed: " + textStatus + ", " + errorThrown);
+            // });
+            // alert("Sent");
         });
 
         $('.close-modal').on('click', function() {
