@@ -178,9 +178,9 @@
     <header>
         <div class="top-menu">
             <a href="index.php" style="color:white;"><img src="assets/header-logo.png" id="header-logo"></a>
-            <h4 style="color: red;">Still in development. Feel free to click around!</h4>
+            <!-- <h5 style="color: red;">Still in development. Feel free to click around!</h5> -->
             <div>
-                <input id="search-box" type="text" placeholder="Search hostels here!">
+                <input id="search-box" type="text" placeholder="Still in development. Feel free to click around!"> <!-- "Update to: Search hostels here! -->
             </div>
             <div class="sign-in-up-buttons-container">
                 <div class="sign-in-up-buttons" id="sign-in-button">Sign in</div>
