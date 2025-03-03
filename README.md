@@ -7,7 +7,7 @@ Japan Hostel Reviewsへようこそ！
 訪問時にはセキュリティ確認ページが表示されることがありまが、
 これはサイトが安全であることを確認するための(Cloudflareを使用した) 簡単なチェックです。
 
-このサイトは、JS / HTML・CSS / JQuery / PHP / SQLite で構築されています。
+このサイトは、JS / HTML / CSS / JQuery / PHP / SQLite で構築されています。
 <br>
 Vultr VPS上でホスティングされています。
 
@@ -18,7 +18,7 @@ Welcome to Japan Hostel Reviews! The site is currently under development, but fe
 
 When you visit, you’ll encounter a security verification page. Don’t worry—this is just a quick check to ensure the site is safe and secure.
 
-Built with JS / HTML/CSS / JQuery / PHP / SQLite. Hosted on a VPS.
+Built with JS / HTML / CSS / JQuery / PHP / SQLite. Hosted on a VPS.
 
 Link: https://japanhostelreviews.com/
 
