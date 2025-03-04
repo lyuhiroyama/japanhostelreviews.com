@@ -10,7 +10,8 @@ Japan Hostel Reviewsへようこそ！
 このサイトは、JS / HTML / CSS / JQuery / PHP / SQLite で構築されています。
 <br>
 Vultr VPS上でホスティングされています。
-
+<br>
+リンク：[japanhostelreviews.com](https://japanhostelreviews.com)
 <br>
 <br>
 
