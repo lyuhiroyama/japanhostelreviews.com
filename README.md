@@ -21,7 +21,7 @@ When you visit, you’ll encounter a security verification page. Don’t worry�
 
 Built with JS / HTML / CSS / JQuery / PHP / SQLite. Hosted on a VPS.
 
-Link: https://japanhostelreviews.com/
+Link: [japanhostelreviews.com](https://japanhostelreviews.com)
 
 <br>
 <br>
