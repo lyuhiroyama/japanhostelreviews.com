@@ -1,6 +1,14 @@
 
 # Japan Hostel Reviews
 
+Welcome to Japan Hostel Reviews! The site is currently under development, but feel free to click around.
+
+When you visit, you’ll encounter a security verification page. Don’t worry—this is just a quick check to ensure the site is safe and secure.
+
+Built with JS / HTML / CSS / JQuery / PHP / SQLite. Hosted on a VPS.
+
+Link: [japanhostelreviews.com](https://japanhostelreviews.com)
+
 Japan Hostel Reviewsへようこそ！
 このサイトは現在開発中ですが、自由にご覧ください。
 
@@ -12,16 +20,9 @@ Japan Hostel Reviewsへようこそ！
 Vultr VPS上でホスティングされています。
 <br>
 リンク：[japanhostelreviews.com](https://japanhostelreviews.com)
+
 <br>
 <br>
-
-Welcome to Japan Hostel Reviews! The site is currently under development, but feel free to click around.
-
-When you visit, you’ll encounter a security verification page. Don’t worry—this is just a quick check to ensure the site is safe and secure.
-
-Built with JS / HTML / CSS / JQuery / PHP / SQLite. Hosted on a VPS.
-
-Link: [japanhostelreviews.com](https://japanhostelreviews.com)
 
 <br>
 <br>
