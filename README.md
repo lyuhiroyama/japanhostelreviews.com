@@ -12,7 +12,7 @@ Link: [japanhostelreviews.com](https://japanhostelreviews.com)
 Japan Hostel Reviewsへようこそ！
 このサイトは現在開発中ですが、自由にご覧ください。
 
-訪問時にはセキュリティ確認ページが表示されることがありまが、
+訪問時にはセキュリティ確認ページが表示されることがありますが、
 これはサイトが安全であることを確認するための(Cloudflareを使用した) 簡単なチェックです。
 
 このサイトは、JS / HTML / CSS / JQuery / PHP / SQLite で構築されています。
