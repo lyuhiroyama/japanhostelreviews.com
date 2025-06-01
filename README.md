@@ -3,7 +3,8 @@
 
 ⚠️ **Note:** This project is archived and has been taken offline.
 
-
+<br>
+<br>
 
 Welcome to Japan Hostel Reviews! The site is currently under development, but feel free to click around.
 
@@ -24,9 +25,6 @@ Japan Hostel Reviewsへようこそ！
 Vultr VPS上でホスティングされています。
 <br>
 リンク：[japanhostelreviews.com](https://japanhostelreviews.com)
-
-<br>
-<br>
 
 <br>
 <br>
