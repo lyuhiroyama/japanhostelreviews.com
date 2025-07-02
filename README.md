@@ -3,9 +3,6 @@
 
 <!--⚠️ **Note:** This project is archived and has been taken offline. -->
 
-<br>
-<br>
-
 Welcome to Japan Hostel Reviews! The site is currently under development, but feel free to click around.
 
 When you visit, you’ll encounter a security verification page. Don’t worry—this is just a quick check to ensure the site is safe and secure.
