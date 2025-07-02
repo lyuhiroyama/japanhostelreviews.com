@@ -1,7 +1,7 @@
 
 # Japan Hostel Reviews
 
-⚠️ **Note:** This project is archived and has been taken offline.
+<!--⚠️ **Note:** This project is archived and has been taken offline. -->
 
 <br>
 <br>
