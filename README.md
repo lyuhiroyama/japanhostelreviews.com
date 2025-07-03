@@ -3,7 +3,7 @@
 
 <!--⚠️ **Note:** This project is archived and has been taken offline. -->
 
-Welcome to Japan Hostel Reviews! The site is currently under development, but feel free to click around.
+Welcome to Japan Hostel Reviews! The site is now archived, but still functional. Please feel free to click around!
 
 When you visit, you’ll encounter a security verification page. Don’t worry—this is just a quick check to ensure the site is safe and secure.
 
@@ -12,7 +12,7 @@ Built with JS / HTML / CSS / jQuery / PHP / SQLite. Hosted on a VPS.
 Link: [japanhostelreviews.com](https://japanhostelreviews.com)
 
 Japan Hostel Reviewsへようこそ！
-このサイトは現在開発中ですが、自由にご覧ください。
+このサイトの開発は中止になりましたが、まだ機能しています。ご自由にご覧ください！
 
 訪問時にはセキュリティ確認ページが表示されることがありますが、
 これはサイトが安全であることを確認するための(Cloudflareを使用した) 簡単なチェックです。
